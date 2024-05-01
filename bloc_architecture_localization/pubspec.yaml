@@ -1,0 +1,19 @@
+name: bloc_architecture_localization
+description: "Localization for BLoC Architecture"
+version: 0.0.1
+homepage: https://github.com/development707/bloc_architecture
+repository: https://github.com/development707/bloc_architecture/tree/main/bloc_architecture_localization
+
+environment:
+  sdk: ">=3.3.4 <4.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
+flutter:
+  generate: true

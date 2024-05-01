@@ -1,0 +1,15 @@
+{
+  "@@locale": "zh",
+  "somethingWentWrong": "发生了一些错误",
+  "now": "现在",
+  "fewSecondsAgo": "几秒前",
+  "minutesRelative": "{minutes} 分钟前",
+  "hoursRelative": "{hours} 小时前",
+  "daysRelative": "{days} 天前",
+  "search": "搜索",
+  "pleaseUpgradeToNewVersion": "请升级到新版本",
+  "serverIsUnderMaintenance": "服务器正在维护",
+  "networkConnectionIsUnstable": "网络连接不稳定",
+  "anErrorHasOccurred": "发生了一个错误",
+  "yourSessionHasExpiredPleaseLogInAgain": "您的会话已过期，请重新登录"
+}

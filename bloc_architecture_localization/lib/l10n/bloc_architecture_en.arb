@@ -1,0 +1,15 @@
+{
+  "@@locale": "en",
+  "somethingWentWrong": "Some thing went wrong",
+  "now": "Now",
+  "fewSecondsAgo": "Few seconds ago",
+  "minutesRelative": "{minutes} minutes ago",
+  "hoursRelative": "{hours} hours ago",
+  "daysRelative": "{days} days ago",
+  "search": "Search",
+  "pleaseUpgradeToNewVersion": "Please upgrade to new version",
+  "serverIsUnderMaintenance": "Server is under maintenance",
+  "networkConnectionIsUnstable": "Network connection is unstable",
+  "anErrorHasOccurred": "An error has occurred",
+  "yourSessionHasExpiredPleaseLogInAgain": "Your session has expired, please log in again"
+}

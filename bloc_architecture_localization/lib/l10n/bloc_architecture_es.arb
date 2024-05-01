@@ -1,0 +1,16 @@
+{
+  "@@locale": "es",
+  "somethingWentWrong": "Algo salió mal",
+  "now": "Ahora",
+  "fewSecondsAgo": "Hace unos segundos",
+  "minutesRelative": "{minutes} minutos atrás",
+  "hoursRelative": "{hours} horas atrás",
+  "daysRelative": "{days} días atrás",
+  "search": "Buscar",
+  "pleaseUpgradeToNewVersion": "Por favor, actualiza a una nueva versión",
+  "serverIsUnderMaintenance": "El servidor está en mantenimiento",
+  "networkConnectionIsUnstable": "La conexión de red no es estable",
+  "anErrorHasOccurred": "Se ha producido un error",
+  "yourSessionHasExpiredPleaseLogInAgain": "Su sesión ha expirado. Por favor, inicie sesión de nuevo"
+}
+

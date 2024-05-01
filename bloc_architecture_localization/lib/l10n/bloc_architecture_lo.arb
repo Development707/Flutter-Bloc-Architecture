@@ -1,0 +1,15 @@
+{
+  "@@locale": "lo",
+  "somethingWentWrong": "ການອາດແພັເພາບລົງໃຈ",
+  "now": "ຫາງນາມາຫຼ້",
+  "fewSecondsAgo": "ການອາດບັນຫານຫວ່າງ",
+  "minutesRelative": "{minutes} ເວນປີກັບກ່ອນ",
+  "hoursRelative": "{hours} ໂມງປີກັບກ່ອນ",
+  "daysRelative": "{days} ມື້ກັບກ່ອນ",
+  "search": "ຄົ້ນຫາ",
+  "pleaseUpgradeToNewVersion": "ກະລຸນາປ່ຽນການອັດຕາເຂົ້າໃຊ້ຂອບແປງໃຊ້ເວີທີທີ່",
+  "serverIsUnderMaintenance": "ລະບຸດຜົນເຄື່ອໄດ້ເຈົ້າຂອງພະບຍດຕາມ",
+  "networkConnectionIsUnstable": "ລະບຸດພະນັກກຳກຽງຂອງການຕົງການຂ້າງຂອ້ນ",
+  "anErrorHasOccurred": "ການອາດເກົ່າຂອງເຈົ້າຂອງ",
+  "yourSessionHasExpiredPleaseLogInAgain": "ວົງທີ່ທີ່ປົງກະເປທກ່ອນອັບການເຂົ້າໃຊ້ການອັບການອັບການແລ້ວ"
+}

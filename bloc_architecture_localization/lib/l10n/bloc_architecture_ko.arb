@@ -1,0 +1,15 @@
+{
+  "@@locale": "ko",
+  "somethingWentWrong": "예기치 않은 오류가 발생했습니다.",
+  "now": "지금",
+  "fewSecondsAgo": "몇 초 전",
+  "minutesRelative": "{minutes} 분 전",
+  "hoursRelative": "{hours} 시간 전",
+  "daysRelative": "{days} 일 전",
+  "search": "검색",
+  "pleaseUpgradeToNewVersion": "최신 버전으로 업데이트해주세요",
+  "serverIsUnderMaintenance": "서버가 점검중입니다.",
+  "networkConnectionIsUnstable": "네트워크 연결이 불안정합니다.",
+  "anErrorHasOccurred": "오류가 발생했습니다.",
+  "yourSessionHasExpiredPleaseLogInAgain": "세션이 만료되었습니다. 다시 로그인 해주세요"
+}

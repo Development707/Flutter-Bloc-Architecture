@@ -1,0 +1,28 @@
+{
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "off"
+  },
+  "dart.lineLength": 120,
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+      120
+    ]
+  },
+  "dart.flutterSdkPath": ".fvm/versions/stable",
+  "files.watcherExclude": {
+    "**/.fvm": true
+  },
+  "search.exclude": {
+    "**/*.freezed.dart": true,
+    "**/*.g.dart": true,
+    "**/.fvm": true,
+    "**/.git": true,
+    "**/*.gr.dart": true,
+    "**/*.mocks.dart": true,
+    "**/*.config.dart": true,
+    "**/*.gen.dart": true,
+    "**/*.graphql.dart": true
+  }
+}

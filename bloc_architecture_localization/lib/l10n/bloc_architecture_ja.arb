@@ -1,0 +1,15 @@
+{
+  "@@locale": "ja",
+  "somethingWentWrong": "何かが間違ったようです",
+  "now": "今",
+  "fewSecondsAgo": "数秒前",
+  "minutesRelative": "{minutes} 分前",
+  "hoursRelative": "{hours} 時間前",
+  "daysRelative": "{days} 日前",
+  "search": "検索",
+  "pleaseUpgradeToNewVersion": "新しいバージョンにアップグレードしてください",
+  "serverIsUnderMaintenance": "サーバーはメンテナンス中です",
+  "networkConnectionIsUnstable": "ネットワーク接続が不安定です",
+  "anErrorHasOccurred": "エラーが発生しました",
+  "yourSessionHasExpiredPleaseLogInAgain": "あなたのセッションは期限切れです、再度ログインしてください"
+}

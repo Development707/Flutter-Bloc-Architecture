@@ -1,0 +1,52 @@
+targets:
+  $default:
+    builders:
+      # https://github.com/charafau/retrofit.dart/blob/master/retrofit_generator/build.yaml
+      retrofit_generator:
+        options:
+          # auto_cast_response: true
+      # https://github.com/google/json_serializable.dart/tree/master/json_serializable#build-configuration
+      json_serializable:
+        options:
+          # any_map: false
+          # checked: false
+          # constructor: ""
+          # create_factory: true
+          # create_field_map: false
+          # create_per_field_to_json: false
+          # create_to_json: true
+          # disallow_unrecognized_keys: false
+          explicit_to_json: true
+          field_rename: snake
+          generic_argument_factories: true
+          # ignore_unannotated: false
+          include_if_null: false
+      # https://pub.dev/packages/freezed#changing-the-behavior-for-the-entire-project
+      freezed:
+        options:
+          union_key: type
+          union_value_case: snake
+          # copy_with: false
+          # equal: false
+          # map: false
+          # when:
+          #   when: false
+          #   maybe_when: false
+          #   when_or_null: false
+      # https://pub.dev/packages/injectable#auto-registering
+      injectable_generator:injectable_builder:
+        options:
+          # auto_register: true
+          # class_name_pattern: "Service$|Repository$|Bloc$"
+          # file_name_pattern: "_service$|_repository$|_bloc$"
+
+global_options:
+  freezed:
+    runs_before:
+      - json_serializable
+  json_serializable:
+    runs_before:
+      - retrofit_generator
+  retrofit_generator:
+    runs_before:
+      - injectable_generator:injectable_builder

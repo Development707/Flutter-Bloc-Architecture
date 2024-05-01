@@ -1,0 +1,29 @@
+name: bloc_architecture_core
+description:
+  Bloc Architecture Core is a set of packages in Dart for Flutter applications.
+  It provides the necessary tools to build applications in a consistent, efficient, and scalable way.
+version: 0.0.1
+homepage: https://github.com/development707/bloc_architecture
+repository: https://github.com/development707/bloc_architecture/tree/main/bloc_architecture_core
+
+environment:
+  sdk: ">=3.3.4 <4.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  bloc_architecture_localization: any
+  dio: any
+  flutter:
+    sdk: flutter
+  flutter_bloc: any
+  freezed_annotation: any
+  get_it: any
+  hydrated_bloc: any
+  infinite_scroll_pagination: any
+  intl: any
+  json_annotation: any
+
+dev_dependencies:
+  build_runner: any
+  freezed: any
+  json_serializable: any

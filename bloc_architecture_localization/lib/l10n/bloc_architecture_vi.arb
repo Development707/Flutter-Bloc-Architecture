@@ -1,0 +1,15 @@
+{
+  "@@locale": "vi",
+  "somethingWentWrong": "Some thing went wrong",
+  "now": "Now",
+  "fewSecondsAgo": "Few seconds ago",
+  "minutesRelative": "{minutes} minutes ago",
+  "hoursRelative": "{hours} hours ago",
+  "daysRelative": "{days} days ago",
+  "search": "Search",
+  "pleaseUpgradeToNewVersion": "Vui lòng nâng cấp phiên bản mới",
+  "serverIsUnderMaintenance": "Máy chủ đang bảo trì",
+  "networkConnectionIsUnstable": "Kết nối mạng không ổn định",
+  "anErrorHasOccurred": "Đã có lỗi xảy ra",
+  "yourSessionHasExpiredPleaseLogInAgain": "Phiên của bạn đã hết hạn, vui lòng đăng nhập lại"
+}

@@ -1,0 +1,6 @@
+{
+  "@@locale": "vi",
+  "helloWorld": "Xin chào thế giới",
+  "versionV": "Phiên bản v{version}",
+  "pleaseEnterPassword": "Xin vui lòng nhập mật khẩu"
+}

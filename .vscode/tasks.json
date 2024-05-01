@@ -1,0 +1,122 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Generate",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Flutter: flutter clean",
+        "Flutter: flutter pub get",
+        "Flutter: flutter packages pub run build_runner build --delete-conflicting-outputs"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/example"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fix and format",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Dart: dart fix --apply",
+        "Dart: dart format --fix --line-length=120 ."
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/example"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Flutter: flutter clean",
+      "type": "flutter",
+      "command": "flutter",
+      "args": ["clean"],
+      "options": {
+        "cwd": "${workspaceFolder}/example"
+      },
+    },
+    {
+      "label": "Flutter: flutter pub get",
+      "type": "flutter",
+      "command": "flutter",
+      "args": ["pub", "get"],
+      "options": {
+        "cwd": "${workspaceFolder}/example"
+      },
+    },
+    {
+      "label": "Flutter: flutter packages pub run build_runner build --delete-conflicting-outputs",
+      "type": "flutter",
+      "command": "flutter",
+      "args": [
+        "packages",
+        "pub",
+        "run",
+        "build_runner",
+        "build",
+        "--delete-conflicting-outputs"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/example"
+      },
+      "problemMatcher": ["$dart-build_runner"],
+      "group": "build"
+    },
+    {
+      "label": "Flutter: flutter build apk",
+      "type": "flutter",
+      "command": "flutter",
+      "args": [
+        "build",
+        "apk",
+        "--release",
+        "--flavor",
+        "development",
+        "--dart-define-from-file",
+        "env-dev.json"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/example"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Flutter: flutter build ipa",
+      "type": "flutter",
+      "command": "flutter",
+      "args": [
+        "build",
+        "ipa",
+        "--release",
+        "--flavor",
+        "development",
+        "--dart-define-from-file",
+        "env-dev.json"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/example"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Dart: dart fix --apply",
+      "type": "dart",
+      "command": "dart",
+      "args": ["fix", "--apply"],
+      "options": {
+        "cwd": "${workspaceFolder}/example"
+      },
+    },
+    {
+      "label": "Dart: dart format --fix --line-length=120 .",
+      "type": "dart",
+      "command": "dart",
+      "args": ["format", "--fix", "--line-length=120", "."],
+      "options": {
+        "cwd": "${workspaceFolder}/example"
+      },
+    }
+  ]
+}

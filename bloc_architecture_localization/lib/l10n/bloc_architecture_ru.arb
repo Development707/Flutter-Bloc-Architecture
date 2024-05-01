@@ -1,0 +1,15 @@
+{
+  "@@locale": "ru",
+  "somethingWentWrong": "Что-то пошло не так",
+  "now": "Теперь",
+  "fewSecondsAgo": "Несколько секунд назад",
+  "minutesRelative": "{minutes} минут назад",
+  "hoursRelative": "{hours} часов назад",
+  "daysRelative": "{days} дней назад",
+  "search": "Поиск",
+  "pleaseUpgradeToNewVersion": "Пожалуйста, обновите версию",
+  "serverIsUnderMaintenance": "Сервер находится в режиме обслуживания",
+  "networkConnectionIsUnstable": "Соединение с сетью нестабильное",
+  "anErrorHasOccurred": "Произошла ошибка",
+  "yourSessionHasExpiredPleaseLogInAgain": "Сессия истекла, пожалуйста, войдите в систему снова"
+}

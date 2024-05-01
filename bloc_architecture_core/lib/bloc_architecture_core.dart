@@ -1,0 +1,10 @@
+// Copyright 2024 The Development707 Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
+
+/// Bloc Architecture Core
+library bloc_architecture_core;
+
+export "base/base.dart";
+export "extension/extension.dart";
+export "util/util.dart";
+export "widget/widget.dart";
