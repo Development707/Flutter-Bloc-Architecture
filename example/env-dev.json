@@ -1,6 +1,0 @@
-{
-  "FLAVOR": "dev",
-  "BASE_URL": "https://accounts.spotify.com/api",
-  "DEEP_LINK_URL": "",
-  "LOCAL_STORAGE_NAME": "LOCAL_STORAGE_NAME"
-}

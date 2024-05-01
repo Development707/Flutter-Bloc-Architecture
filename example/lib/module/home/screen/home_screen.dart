@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 
 import "../../../core/base/base.dart";
+import "../../../core/config/config.dart";
 import "../../../core/config/injector.dart";
 import "../../../core/theme/theme.dart";
 import "../../auth/auth.dart";
@@ -25,7 +26,7 @@ class _HomeScreenState extends AppPageState<HomeScreen, HomeBloc> {
   @override
   Widget buildPage(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Home page")),
+      appBar: AppBar(title: Text("Home screen - ${Config.environment?.name}")),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
