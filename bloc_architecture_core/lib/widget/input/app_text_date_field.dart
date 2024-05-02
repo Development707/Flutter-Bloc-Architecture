@@ -96,7 +96,7 @@ class _AppTextDateFieldState extends AppTextFormFieldState<AppTextDateField> {
   void onFieldChange(String value) {
     super.onFieldChange(value);
 
-    onDateTimeChange(DateTime.tryParse(value));
+    onDateTimeChange(widget.dateFormat.parse(value));
   }
 
   @override
@@ -120,7 +120,7 @@ class _AppTextDateFieldState extends AppTextFormFieldState<AppTextDateField> {
           return DateTime(value.year, value.month, value.day, time.hour, time.minute);
         }
       }
-      return null;
+      return value;
     });
 
     onDateTimeChange(dateTime);
