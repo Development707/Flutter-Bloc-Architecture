@@ -6,11 +6,11 @@ import "../util/util.dart";
 /// Common extension for number
 extension NumberExtension on num {
   /// Convert number to currency
-  String get toCurrency => NumberFormatter.currency.format(this);
+  String toCurrency() => NumberFormatter.currency.format(this);
 
   /// Convert number to decimal
-  String get toDecimal => NumberFormatter.decimal.format(this);
+  String toDecimal() => NumberFormatter.decimal.format(this);
 
   /// Convert number to percent
-  String get toPercent => NumberFormatter.percent.format(this);
+  String toPercent() => NumberFormatter.percent.format(this);
 }

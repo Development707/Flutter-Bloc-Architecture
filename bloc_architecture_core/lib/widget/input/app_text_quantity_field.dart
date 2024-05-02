@@ -126,7 +126,7 @@ class _AppTextQuantityFieldState<T extends num> extends AppTextFormFieldState<Ap
       return;
     }
 
-    controller.text = quantity.toDecimal;
+    controller.text = quantity.toDecimal();
 
     widget.onQuantityChanged?.call(quantity);
   }

@@ -12,19 +12,19 @@ extension DateTimeExtesion on DateTime {
   String toStringByFormat(DateFormat format) => format.format(this);
 
   /// Format: yyyy.MM.dd
-  String get toDateString => DateTimeUtil.convertToDate(this);
+  String toDateString() => DateTimeUtil.convertToDate(this);
 
   /// Format: HH:mm:ss
-  String get toTimeString => DateTimeUtil.convertToTime(this);
+  String toTimeString() => DateTimeUtil.convertToTime(this);
 
   /// Format: yyyy.MM.dd HH:mm:ss
-  String get toDateTimeString => DateTimeUtil.convertToDateTime(this);
+  String toDateTimeString() => DateTimeUtil.convertToDateTime(this);
 
   /// Format: HH:mm
-  String get toTimeNoSecondString => DateTimeUtil.convertToTimeNoSecond(this);
+  String toTimeNoSecondString() => DateTimeUtil.convertToTimeNoSecond(this);
 
   /// Format: yyyy.MM.dd HH:mm
-  String get toDateTimeNoSecondString => DateTimeUtil.convertToDateTimeNoSecond(this);
+  String toDateTimeNoSecondString() => DateTimeUtil.convertToDateTimeNoSecond(this);
 
   /// Format: Now, few Seconds Ago, 1 minutes ago, 2 hours ago, 3 days ago,...
   String toRelativeString(BuildContext context) => DateTimeUtil.convertToDateRelative(context, this);
@@ -33,19 +33,19 @@ extension DateTimeExtesion on DateTime {
 /// Common extension for DateTime null
 extension DateTimeNullExtesion on DateTime? {
   /// Format: yyyy.MM.dd
-  String get toDateString => this?.toDateString ?? "";
+  String toDateString() => this?.toDateString() ?? "";
 
   /// Format: HH:mm:ss
-  String get toTimeString => this?.toTimeString ?? "";
+  String toTimeString() => this?.toTimeString() ?? "";
 
   /// Format: yyyy.MM.dd HH:mm:ss
-  String get toDateTimeString => this?.toDateTimeString ?? "";
+  String toDateTimeString() => this?.toDateTimeString() ?? "";
 
   /// Format: HH:mm
-  String get toTimeNoSecondString => this?.toTimeNoSecondString ?? "";
+  String toTimeNoSecondString() => this?.toTimeNoSecondString() ?? "";
 
   /// Format: yyyy.MM.dd HH:mm
-  String get toDateTimeNoSecondString => this?.toDateTimeNoSecondString ?? "";
+  String toDateTimeNoSecondString() => this?.toDateTimeNoSecondString() ?? "";
 
   /// Format: Now, few Seconds Ago, 1 minutes ago, 2 hours ago, 3 days ago,...
   String toRelativeString(BuildContext context) => this?.toRelativeString(context) ?? "";

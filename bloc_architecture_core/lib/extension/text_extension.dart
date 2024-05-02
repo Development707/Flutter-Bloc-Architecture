@@ -6,10 +6,10 @@ import "package:flutter/widgets.dart";
 /// Common extension for TextStyle
 extension TextStyleExtension on TextStyle {
   /// Use glyphs that have a more pronounced angle and typically a cursive style ("italic type").
-  TextStyle get italic => copyWith(fontStyle: FontStyle.italic);
+  TextStyle italic() => copyWith(fontStyle: FontStyle.italic);
 
   /// A commonly used font weight that is heavier than normal.
-  TextStyle get bold => copyWith(fontWeight: FontWeight.bold);
+  TextStyle bold() => copyWith(fontWeight: FontWeight.bold);
 }
 
 /// Common extension for String null
