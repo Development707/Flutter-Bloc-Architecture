@@ -5,6 +5,9 @@ class BlocArchitectureLocalizationsTh extends BlocArchitectureLocalizations {
   BlocArchitectureLocalizationsTh([String locale = 'th']) : super(locale);
 
   @override
+  String get noItemsFound => 'ไม่พบข้อมูล';
+
+  @override
   String get somethingWentWrong => 'เกิดข้อผิดพลาดบางอย่าง';
 
   @override

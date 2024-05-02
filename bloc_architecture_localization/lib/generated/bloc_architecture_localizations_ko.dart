@@ -5,6 +5,9 @@ class BlocArchitectureLocalizationsKo extends BlocArchitectureLocalizations {
   BlocArchitectureLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
+  String get noItemsFound => '이두 교체가 없습니다.';
+
+  @override
   String get somethingWentWrong => '예기치 않은 오류가 발생했습니다.';
 
   @override

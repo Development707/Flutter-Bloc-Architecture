@@ -5,6 +5,9 @@ class BlocArchitectureLocalizationsZh extends BlocArchitectureLocalizations {
   BlocArchitectureLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
+  String get noItemsFound => '找不到任何内容';
+
+  @override
   String get somethingWentWrong => '发生了一些错误';
 
   @override

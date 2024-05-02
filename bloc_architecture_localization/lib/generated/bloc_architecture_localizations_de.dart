@@ -5,6 +5,9 @@ class BlocArchitectureLocalizationsDe extends BlocArchitectureLocalizations {
   BlocArchitectureLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
+  String get noItemsFound => 'Keine Items gefunden';
+
+  @override
   String get somethingWentWrong => 'Etwas ist schiefgelaufen';
 
   @override

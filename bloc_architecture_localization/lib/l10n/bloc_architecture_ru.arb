@@ -1,5 +1,6 @@
 {
   "@@locale": "ru",
+  "noItemsFound": "Ничего не найдено",
   "somethingWentWrong": "Что-то пошло не так",
   "now": "Теперь",
   "fewSecondsAgo": "Несколько секунд назад",

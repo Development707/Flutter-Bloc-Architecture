@@ -33,18 +33,18 @@ class StatusCubit extends Cubit<StatusState> {
     FutureOr<void> Function(T value)? doOnSuccess,
     FutureOr<void> Function(Object error)? doOnError,
     FutureOr<void> Function()? doOnEventCompleted,
-    bool handleLoading = true,
+    bool autoHandleStatus = true,
   }) async {
     try {
       await doOnEventStart?.call();
 
-      if (handleLoading) {
+      if (autoHandleStatus) {
         loadingEmitted();
       }
 
       final T value = await action.call();
 
-      if (handleLoading) {
+      if (autoHandleStatus) {
         successEmitted();
       }
 
@@ -52,7 +52,7 @@ class StatusCubit extends Cubit<StatusState> {
     } on Object catch (error, stackTrace) {
       addError(error, stackTrace);
 
-      if (handleLoading) {
+      if (autoHandleStatus) {
         errorEmitted(error);
       }
 

@@ -5,6 +5,9 @@ class BlocArchitectureLocalizationsFr extends BlocArchitectureLocalizations {
   BlocArchitectureLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
+  String get noItemsFound => 'Aucun élément n\'a été trouvé';
+
+  @override
   String get somethingWentWrong => 'Quelque chose s\'est mal passé';
 
   @override

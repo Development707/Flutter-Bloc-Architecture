@@ -1,5 +1,6 @@
 {
   "@@locale": "zh",
+  "noItemsFound": "找不到任何内容",
   "somethingWentWrong": "发生了一些错误",
   "now": "现在",
   "fewSecondsAgo": "几秒前",

@@ -5,6 +5,9 @@ class BlocArchitectureLocalizationsRu extends BlocArchitectureLocalizations {
   BlocArchitectureLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
+  String get noItemsFound => 'Ничего не найдено';
+
+  @override
   String get somethingWentWrong => 'Что-то пошло не так';
 
   @override

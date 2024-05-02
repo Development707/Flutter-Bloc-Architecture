@@ -73,7 +73,7 @@ abstract class BaseBlocDelegate<E, S> extends Bloc<E, S> with LogMixin {
     FutureOr<void> Function(T value)? doOnSuccess,
     FutureOr<void> Function(Object error)? doOnError,
     FutureOr<void> Function()? doOnEventCompleted,
-    bool handleLoading = true,
+    bool autoHandleStatus = true,
   }) =>
       statusCubit.runCubitCatching(
         action: action,
@@ -81,6 +81,6 @@ abstract class BaseBlocDelegate<E, S> extends Bloc<E, S> with LogMixin {
         doOnSuccess: doOnSuccess,
         doOnError: doOnError,
         doOnEventCompleted: doOnEventCompleted,
-        handleLoading: handleLoading,
+        autoHandleStatus: autoHandleStatus,
       );
 }

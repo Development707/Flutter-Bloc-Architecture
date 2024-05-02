@@ -5,6 +5,9 @@ class BlocArchitectureLocalizationsLo extends BlocArchitectureLocalizations {
   BlocArchitectureLocalizationsLo([String locale = 'lo']) : super(locale);
 
   @override
+  String get noItemsFound => 'ບໍ່ພົບລາຍການ';
+
+  @override
   String get somethingWentWrong => 'ການອາດແພັເພາບລົງໃຈ';
 
   @override

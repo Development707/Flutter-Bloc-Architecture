@@ -1,5 +1,6 @@
 {
   "@@locale": "ja",
+  "noItemsFound": "見つかりませんでした",
   "somethingWentWrong": "何かが間違ったようです",
   "now": "今",
   "fewSecondsAgo": "数秒前",

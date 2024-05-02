@@ -5,31 +5,34 @@ class BlocArchitectureLocalizationsVi extends BlocArchitectureLocalizations {
   BlocArchitectureLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
-  String get somethingWentWrong => 'Some thing went wrong';
+  String get noItemsFound => 'Không tìm thấy';
 
   @override
-  String get now => 'Now';
+  String get somethingWentWrong => 'Đã có lỗi xử lý';
 
   @override
-  String get fewSecondsAgo => 'Few seconds ago';
+  String get now => 'Bây giờ';
+
+  @override
+  String get fewSecondsAgo => 'Vài giây trước';
 
   @override
   String minutesRelative(Object minutes) {
-    return '$minutes minutes ago';
+    return '$minutes phút trước';
   }
 
   @override
   String hoursRelative(Object hours) {
-    return '$hours hours ago';
+    return '$hours giờ trước';
   }
 
   @override
   String daysRelative(Object days) {
-    return '$days days ago';
+    return '$days ngày trước';
   }
 
   @override
-  String get search => 'Search';
+  String get search => 'Tìm kiếm';
 
   @override
   String get pleaseUpgradeToNewVersion => 'Vui lòng nâng cấp phiên bản mới';

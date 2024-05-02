@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 
 import "../../../core/base/base.dart";
 import "../../../core/config/config.dart";
-import "../../../core/config/injector.dart";
 import "../../../core/theme/theme.dart";
 import "../../auth/auth.dart";
 import "../bloc/home_bloc.dart";

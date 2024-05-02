@@ -69,6 +69,17 @@ Example:
 
 In Flutter, code generation is used for a variety of purposes, such as generating code for working with JSON data, generating code for working with databases, and generating code for working with web services. Code generation can make it easier to write and maintain code, as it can automate repetitive tasks and reduce the amount of manual coding that is required.
 
+- bloc_architecture_core
+  ```bash
+  flutter pub get
+  flutter pub run build_runner build --delete-conflicting-outputs
+  ```
+- bloc_architecture_localization
+  ```bash
+  flutter pub get
+  flutter gen-l10n
+  ```
+
 ## [1. Freezed](https://pub.dev/packages/freezed)
 
 Code generation for immutable classes that has a simple syntax/API without compromising on the features.

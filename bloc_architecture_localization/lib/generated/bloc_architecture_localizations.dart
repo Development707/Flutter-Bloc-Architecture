@@ -111,6 +111,12 @@ abstract class BlocArchitectureLocalizations {
     Locale('zh')
   ];
 
+  /// No description provided for @noItemsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No items found'**
+  String get noItemsFound;
+
   /// No description provided for @somethingWentWrong.
   ///
   /// In en, this message translates to:

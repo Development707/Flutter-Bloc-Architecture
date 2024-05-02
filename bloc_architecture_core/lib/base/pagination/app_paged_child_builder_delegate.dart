@@ -23,7 +23,7 @@ class AppPagedChildBuilderDelegate<T> extends PagedChildBuilderDelegate<T> {
 
     /// Other
     super.animateTransitions = true,
-    super.noItemsFoundIndicatorBuilder,
+    super.noItemsFoundIndicatorBuilder = _pageNoItemsFoundIndicator,
     super.noMoreItemsIndicatorBuilder,
   });
 }
@@ -45,5 +45,21 @@ Widget _pageErrorIndicator(BuildContext context) {
 }
 
 Widget _pageProgressIndicator(BuildContext context) {
-  return const CircularProgressIndicator.adaptive();
+  return const CircularProgressIndicator();
+}
+
+Widget _pageNoItemsFoundIndicator(BuildContext context) {
+  final ColorScheme colors = context.colorScheme;
+  final BlocArchitectureLocalizations? l10n = context.blocArchitecturel10n;
+
+  return Center(
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Icon(Icons.search, color: colors.onBackground),
+        Text(l10n?.noItemsFound ?? "No items found", style: context.textTheme.bodySmall),
+        const SizedBox(height: 8),
+      ],
+    ),
+  );
 }

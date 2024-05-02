@@ -1,5 +1,6 @@
 {
   "@@locale": "fr",
+  "noItemsFound": "Aucun élément n'a été trouvé",
   "somethingWentWrong": "Quelque chose s'est mal passé",
   "now": "Maintenant",
   "fewSecondsAgo": "Il y a quelques secondes",

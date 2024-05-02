@@ -1,5 +1,6 @@
 {
   "@@locale": "ko",
+  "noItemsFound": "이두 교체가 없습니다.",
   "somethingWentWrong": "예기치 않은 오류가 발생했습니다.",
   "now": "지금",
   "fewSecondsAgo": "몇 초 전",

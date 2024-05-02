@@ -1,5 +1,6 @@
 {
   "@@locale": "th",
+  "noItemsFound": "ไม่พบข้อมูล",
   "somethingWentWrong": "เกิดข้อผิดพลาดบางอย่าง",
   "now": "ตอนนี้",
   "fewSecondsAgo": "ไม่กี่วินาที่แล้ว",
