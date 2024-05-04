@@ -1,3 +1,4 @@
+import "package:bloc_architecture_core/bloc_architecture_core.dart";
 import "package:flutter/material.dart";
 
 import "../../../core/base/base.dart";
@@ -24,7 +25,8 @@ class _HomeScreenState extends AppPageState<HomeScreen, HomeBloc> {
 
   @override
   Widget buildPage(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
+      disableGesturesOnLoad: true,
       appBar: AppBar(title: Text("Home screen - ${Config.environment?.name}")),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

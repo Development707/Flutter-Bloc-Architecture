@@ -22,7 +22,7 @@ class HomeBloc extends BaseBloc<HomeEvent, HomeState> {
   final AuthClient authClient;
 
   Future<void> _onStarted(_Started event, Emitter<HomeState> emit) => runBlocCatching(
-        action: () => Future<void>.delayed(const Duration(seconds: 1)),
+        action: () => Future<void>.delayed(const Duration(seconds: 3)),
       );
 
   Future<void> _onTestApi(_TestApi event, Emitter<HomeState> emit) => runBlocCatching(
