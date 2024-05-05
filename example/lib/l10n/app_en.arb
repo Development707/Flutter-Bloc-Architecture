@@ -1,6 +1,7 @@
 {
   "@@locale": "en",
   "helloWorld": "Hello world",
+  "logout": "Logout",
   "versionV": "Version v{version}",
   "pleaseEnterPassword": "Please enter password"
 }

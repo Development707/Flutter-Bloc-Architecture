@@ -1,9 +1,11 @@
 import "package:bloc_architecture_core/bloc_architecture_core.dart";
 import "package:flutter/material.dart";
+import "package:flutter_gen/gen_l10n/app_localizations.dart";
 
 import "../../../core/base/base.dart";
 import "../../../core/config/config.dart";
 import "../../../core/theme/theme.dart";
+import "../../app/bloc/app_bloc.dart";
 import "../../auth/auth.dart";
 import "../bloc/home_bloc.dart";
 
@@ -59,9 +61,24 @@ class _HomeScreenState extends AppPageState<HomeScreen, HomeBloc> {
             ).show(context),
             child: const Text("AppDialog"),
           ),
-          const AppDropdownField<String>(
-            enableFilter: true,
-            dropdownMenuEntries: <String>["item1", "item2", "item3"],
+          AppDropdownField<ThemeMode>(
+            initialSelection: getIt.get<AppBloc>().state.themeMode,
+            dropdownMenuEntries: ThemeMode.values,
+            buildLabel: (ThemeMode value, BuildContext context) => value.name,
+            onSelected: (ThemeMode? value) {
+              if (value != null) {
+                getIt.get<AppBloc>().add(AppEvent.changeThemeMode(value));
+              }
+            },
+          ),
+          AppDropdownField<Locale>(
+            initialSelection: getIt.get<AppBloc>().state.locale,
+            dropdownMenuEntries: AppLocalizations.supportedLocales,
+            onSelected: (Locale? value) {
+              if (value != null) {
+                getIt.get<AppBloc>().add(AppEvent.changeLocale(value));
+              }
+            },
           ),
           AppTextDateField(),
           const AppTextFormField(),
@@ -101,7 +118,7 @@ class _HomeScreenState extends AppPageState<HomeScreen, HomeBloc> {
               Step(title: Text("Step 1"), content: Text("Content 1")),
               Step(title: Text("Step 2"), content: Text("Content 2")),
             ],
-          )
+          ),
         ],
       ),
       floatingActionButton: AppFab(
@@ -122,7 +139,7 @@ class _HomeScreenState extends AppPageState<HomeScreen, HomeBloc> {
             ),
             ElevatedButton(
               onPressed: () => getIt.get<AuthBloc>().add(const AuthEvent.logout()),
-              child: const Text("Logout"),
+              child: Text(l10n.logout),
             ),
           ],
         ),
