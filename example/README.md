@@ -1,6 +1,6 @@
 # bloc_architecture_example
 
-Demonstrates how to use the bloc_architecture plugin.
+Demonstrates how to use the bloc_architecture plugin. [github-pages](https://development707.github.io/Flutter-Bloc-Architecture/)
 
 ## 1. Install dependencies
 
