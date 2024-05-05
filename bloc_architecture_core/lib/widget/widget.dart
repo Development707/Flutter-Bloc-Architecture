@@ -9,7 +9,6 @@ export "input/app_text_date_field.dart";
 export "input/app_text_form_field.dart";
 export "input/app_text_password_field.dart";
 export "input/app_text_quantity_field.dart";
-export "input/app_text_search_field.dart";
 export "input/dropdown/app_dropdown_field.dart";
 export "view/app_animated.dart";
 export "view/app_card.dart";

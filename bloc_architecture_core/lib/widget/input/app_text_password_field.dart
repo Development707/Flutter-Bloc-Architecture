@@ -11,26 +11,61 @@ class AppTextPasswordField extends AppTextFormField {
   /// Handle form input text field
   const AppTextPasswordField({
     super.key,
+    // Password
     this.suffixIconSize = 20,
+    super.keyboardType = TextInputType.visiblePassword,
+    super.textInputAction = TextInputAction.done,
+    super.textCapitalization = TextCapitalization.none,
+    super.obscureText = true,
     // Form
     super.formFieldKey,
+    super.restorationId,
     super.initialValue,
     super.validator,
     super.onSaved,
     super.onFieldSubmitted,
-    // Handler
+    // Text field
     super.controller,
     super.focusNode,
+    super.style,
+    super.textAlign,
+    super.textAlignVertical,
+    super.textDirection,
+    super.readOnly,
+    super.showCursor,
+    super.autofocus,
+    super.autocorrect,
+    super.enableSuggestions,
+    super.enabled,
+    super.minLines,
+    super.maxLength,
     super.onChanged,
     super.onEditingEnd,
+    super.onFocusChange,
+    super.onEditingCompleteValue,
+    super.onEditingComplete,
+    super.onTap,
+    super.inputFormatters,
     // Decoration
-    super.keyboardType = TextInputType.visiblePassword,
-    super.textInputAction = TextInputAction.done,
-    super.textCapitalization = TextCapitalization.none,
+    super.decoration,
+    super.border,
+    super.fillColor,
+    super.prefix,
+    super.suffix,
+    super.prefixIcon,
     super.label,
-    super.contentPadding,
     super.hintText,
-    super.obscureText = true,
+    super.errorText,
+    super.suffixIcon,
+    super.suffixIconConstraints,
+    super.prefixIconConstraints,
+    super.contentPadding,
+    super.isDense,
+    // Scroll
+    super.expands,
+    super.maxLines,
+    super.scrollController,
+    super.scrollPhysics,
   });
 
   /// Icon eye size
@@ -69,6 +104,6 @@ class _AppTextFormPasswordFieldState extends AppTextFormFieldState<AppTextPasswo
 
   @override
   InputDecoration buildDecoration(BuildContext context) {
-    return super.buildDecoration(context).copyWith(suffixIcon: suffixIcon);
+    return super.buildDecoration(context).copyWith(suffixIcon: widget.suffixIcon ?? suffixIcon);
   }
 }

@@ -232,8 +232,8 @@ class _ExpandingActionButton extends StatelessWidget {
           progress.value * maxDistance,
         );
         return Positioned(
-          right: 4.0 + offset.dx,
-          bottom: 4.0 + offset.dy,
+          right: offset.dx,
+          bottom: offset.dy,
           child: child!,
         );
       },

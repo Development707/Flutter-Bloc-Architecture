@@ -16,26 +16,83 @@ import "../app_text_form_field.dart";
 class AppDropdownField<T> extends AppTextFormField {
   /// Create instance of [AppDropdownField].
   const AppDropdownField({
+    // Dropdown
     required this.dropdownMenuEntries,
-    super.key,
-    super.enabled,
-    super.style,
-    super.label,
-    super.hintText,
-    super.prefixIcon,
-    super.suffixIcon,
-    super.fillColor,
-    super.onFieldSubmitted,
-    super.controller,
-    super.formFieldKey,
-    super.validator, // Issue open: https://github.com/flutter/flutter/issues/141941
     this.initialSelection,
     this.onSelected,
     this.buildLabel,
     this.buildLabelWidget,
     this.buildLeadingIcon,
     this.buildTrailingIcon,
+    this.helperText,
+    this.selectedTrailingIcon,
+    this.enableFilter = false,
+    this.enableSearch = true,
+    super.key,
+    // Form
+    super.formFieldKey,
+    super.restorationId,
+    super.initialValue,
+    super.validator, // Issue open: https://github.com/flutter/flutter/issues/141941
+    super.onSaved,
+    super.onFieldSubmitted,
+    // Text field
+    super.controller,
+    super.focusNode,
+    super.textInputAction,
+    super.textCapitalization,
+    super.style,
+    super.textAlignVertical,
+    super.textDirection,
+    super.readOnly,
+    super.showCursor,
+    super.autofocus,
+    super.autocorrect,
+    super.obscureText,
+    super.enableSuggestions,
+    super.enabled,
+    super.minLines,
+    super.maxLength,
+    super.onChanged,
+    super.onEditingEnd,
+    super.onFocusChange,
+    super.onEditingCompleteValue,
+    super.onEditingComplete,
+    super.onTap,
+    super.inputFormatters,
+    // Decoration
+    super.decoration,
+    super.border,
+    super.fillColor,
+    super.prefix,
+    super.suffix,
+    super.prefixIcon,
+    super.label,
+    super.hintText,
+    super.errorText,
+    super.suffixIcon,
+    super.suffixIconConstraints,
+    super.prefixIconConstraints,
+    super.contentPadding,
+    super.isDense,
+    // Scroll
+    super.expands,
+    super.maxLines,
+    super.scrollController,
+    super.scrollPhysics,
   });
+
+  /// DropdownMenu: selected trailing icon
+  final Widget? selectedTrailingIcon;
+
+  /// DropdownMenu: helper text
+  final String? helperText;
+
+  /// DropdownMenu: enable filter
+  final bool enableFilter;
+
+  /// DropdownMenu: enable search
+  final bool enableSearch;
 
   /// The value used to for an initial selection.
   final T? initialSelection;
@@ -71,7 +128,10 @@ class AppDropdownField<T> extends AppTextFormField {
       ..add(ObjectFlagProperty<Widget Function(T value)?>.has("buildLabelWidget", buildLabelWidget))
       ..add(ObjectFlagProperty<Widget Function(T value)?>.has("buildLeadingIcon", buildLeadingIcon))
       ..add(ObjectFlagProperty<Widget Function(T value)?>.has("buildTrailingIcon", buildTrailingIcon))
-      ..add(ObjectFlagProperty<String Function(T value, BuildContext context)?>.has("buildLabel", buildLabel));
+      ..add(ObjectFlagProperty<String Function(T value, BuildContext context)?>.has("buildLabel", buildLabel))
+      ..add(StringProperty("helperText", helperText))
+      ..add(DiagnosticsProperty<bool>("enableFilter", enableFilter))
+      ..add(DiagnosticsProperty<bool>("enableSearch", enableSearch));
   }
 }
 
@@ -96,35 +156,73 @@ class AppDropdownFieldState<T, W extends AppDropdownField<T>> extends AppTextFor
 
   @override
   Widget build(BuildContext context) {
+    final InputDecoration inputDecoration = buildDecoration(context);
+
     return DropdownMenu<T>(
       expandedInsets: AppDimens.dropdownPadding,
       menuHeight: AppDimens.dropdownHeight,
-      enabled: widget.enabled ?? true,
-      textStyle: widget.style,
-      label: widget.label,
-      hintText: widget.hintText,
-      leadingIcon: widget.prefixIcon,
       trailingIcon: trailingIcon,
-      inputDecorationTheme: context.theme.inputDecorationTheme.copyWith(
-        border: widget.border,
-        isDense: widget.isDense,
-        contentPadding: widget.contentPadding,
-        filled: true,
-        fillColor: widget.fillColor ?? Theme.of(context).scaffoldBackgroundColor,
-        labelStyle: widget.style,
-        hintStyle: widget.style,
-        constraints: const BoxConstraints.tightFor(height: 46),
-      ),
+      selectedTrailingIcon: selectedTrailingIcon,
       initialSelection: initialSelection,
       dropdownMenuEntries: dropdownMenuEntries,
       controller: controller,
       onSelected: onSelected,
+
+      /// TextField
+      enabled: widget.enabled ?? true,
+      leadingIcon: widget.prefixIcon,
+      label: widget.label,
+      hintText: widget.hintText,
+      errorText: widget.errorText,
+      textStyle: widget.style,
+      helperText: widget.helperText,
+      enableFilter: widget.enableFilter,
+      enableSearch: widget.enableSearch,
+
+      /// Convert [InputDecoration] to [InputDecorationTheme]
+      inputDecorationTheme: context.theme.inputDecorationTheme.copyWith(
+        labelStyle: inputDecoration.labelStyle,
+        floatingLabelStyle: inputDecoration.floatingLabelStyle,
+        helperStyle: inputDecoration.helperStyle,
+        helperMaxLines: inputDecoration.helperMaxLines,
+        hintStyle: inputDecoration.hintStyle,
+        hintFadeDuration: inputDecoration.hintFadeDuration,
+        errorStyle: inputDecoration.errorStyle,
+        errorMaxLines: inputDecoration.errorMaxLines,
+        floatingLabelBehavior: inputDecoration.floatingLabelBehavior,
+        isDense: inputDecoration.isDense,
+        contentPadding: inputDecoration.contentPadding,
+        isCollapsed: inputDecoration.isCollapsed,
+        iconColor: inputDecoration.iconColor,
+        prefixStyle: inputDecoration.prefixStyle,
+        prefixIconColor: inputDecoration.prefixIconColor,
+        suffixStyle: inputDecoration.suffixStyle,
+        suffixIconColor: inputDecoration.suffixIconColor,
+        counterStyle: inputDecoration.counterStyle,
+        filled: inputDecoration.filled,
+        fillColor: inputDecoration.fillColor,
+        activeIndicatorBorder:
+            (inputDecoration is UnderlineInputBorder) ? (inputDecoration as UnderlineInputBorder).borderSide : null,
+        outlineBorder:
+            (inputDecoration is OutlineInputBorder) ? (inputDecoration as OutlineInputBorder).borderSide : null,
+        focusedBorder: inputDecoration.focusedBorder,
+        focusedErrorBorder: inputDecoration.focusedErrorBorder,
+        disabledBorder: inputDecoration.disabledBorder,
+        enabledBorder: inputDecoration.enabledBorder,
+        border: inputDecoration.border,
+        alignLabelWithHint: inputDecoration.alignLabelWithHint,
+        constraints: const BoxConstraints.tightFor(height: 46),
+      ),
     );
   }
 
   /// Build leading icon
   @protected
   Widget? get trailingIcon => widget.suffixIcon;
+
+  /// Build trailing icon
+  @protected
+  Widget? get selectedTrailingIcon => widget.selectedTrailingIcon;
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
