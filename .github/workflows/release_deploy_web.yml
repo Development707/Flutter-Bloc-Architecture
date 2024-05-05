@@ -12,23 +12,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone repository
+      - name: Clone
         uses: actions/checkout@v4
 
-      - name: Set up Flutter
+      - name: Setup
         uses: subosito/flutter-action@v2
         with:
           channel: stable
           flutter-version-file: example/pubspec.yaml
 
-      - name: Enable Flutter Web
+      - name: Configure
         run: flutter config --enable-web
 
-      - name: Download Dependencies
+      - name: Download
         run: flutter pub get
         working-directory: example
 
-      - name: Generating Files
+      - name: Generate
         run: flutter pub run build_runner build --delete-conflicting-outputs
         working-directory: example
 

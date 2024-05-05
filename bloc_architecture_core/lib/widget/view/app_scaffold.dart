@@ -81,9 +81,9 @@ Widget? _disableGestures(Widget? body) {
   if (body != null) {
     return BlocBuilder<StatusCubit, StatusState>(
       buildWhen: (StatusState previous, StatusState current) => previous.isLoading != current.isLoading,
-      builder: (BuildContext context, StatusState state) => state.maybeWhen(
-        loading: (_) => IgnorePointer(child: body),
-        orElse: () => body,
+      builder: (BuildContext context, StatusState state) => IgnorePointer(
+        ignoring: state.isLoading,
+        child: body,
       ),
     );
   }
