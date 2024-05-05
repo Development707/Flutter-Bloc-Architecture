@@ -37,8 +37,8 @@ class AppDialog extends StatelessWidget {
     Widget? title,
     Widget? content,
     Widget? action,
-    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
-    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.center,
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
+    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
   })  : assert(title != null || content != null, "a must not be null title or content"),
         child = Builder(builder: (BuildContext context) {
           return Column(
