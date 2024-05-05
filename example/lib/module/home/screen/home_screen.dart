@@ -39,6 +39,7 @@ class _HomeScreenState extends AppPageState<HomeScreen, HomeBloc> {
       disableGesturesOnLoad: true,
       appBar: AppBar(title: Text("Home screen - ${Config.environment?.name}")),
       body: GridView(
+        primary: true,
         padding: const EdgeInsets.all(10),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 500,
