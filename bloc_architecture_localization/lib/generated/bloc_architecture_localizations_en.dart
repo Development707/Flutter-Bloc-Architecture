@@ -5,26 +5,10 @@ class BlocArchitectureLocalizationsEn extends BlocArchitectureLocalizations {
   BlocArchitectureLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get noItemsFound => 'No items found';
+  String get anErrorHasOccurred => 'An error has occurred';
 
   @override
-  String get somethingWentWrong => 'Some thing went wrong';
-
-  @override
-  String get now => 'Now';
-
-  @override
-  String get fewSecondsAgo => 'Few seconds ago';
-
-  @override
-  String minutesRelative(Object minutes) {
-    return '$minutes minutes ago';
-  }
-
-  @override
-  String hoursRelative(Object hours) {
-    return '$hours hours ago';
-  }
+  String get cancel => 'Cancel';
 
   @override
   String daysRelative(Object days) {
@@ -32,19 +16,47 @@ class BlocArchitectureLocalizationsEn extends BlocArchitectureLocalizations {
   }
 
   @override
-  String get search => 'Search';
+  String get fewSecondsAgo => 'Few seconds ago';
 
   @override
-  String get pleaseUpgradeToNewVersion => 'Please upgrade to new version';
+  String hoursRelative(Object hours) {
+    return '$hours hours ago';
+  }
 
   @override
-  String get serverIsUnderMaintenance => 'Server is under maintenance';
+  String minutesRelative(Object minutes) {
+    return '$minutes minutes ago';
+  }
 
   @override
   String get networkConnectionIsUnstable => 'Network connection is unstable';
 
   @override
-  String get anErrorHasOccurred => 'An error has occurred';
+  String get no => 'No';
+
+  @override
+  String get noItemsFound => 'No items found';
+
+  @override
+  String get now => 'Now';
+
+  @override
+  String get ok => 'Ok';
+
+  @override
+  String get pleaseUpgradeToNewVersion => 'Please upgrade to new version';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get serverIsUnderMaintenance => 'Server is under maintenance';
+
+  @override
+  String get somethingWentWrong => 'Some thing went wrong';
+
+  @override
+  String get yes => 'Yes';
 
   @override
   String get yourSessionHasExpiredPleaseLogInAgain => 'Your session has expired, please log in again';

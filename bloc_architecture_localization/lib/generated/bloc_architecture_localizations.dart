@@ -111,41 +111,17 @@ abstract class BlocArchitectureLocalizations {
     Locale('zh')
   ];
 
-  /// No description provided for @noItemsFound.
+  /// No description provided for @anErrorHasOccurred.
   ///
   /// In en, this message translates to:
-  /// **'No items found'**
-  String get noItemsFound;
+  /// **'An error has occurred'**
+  String get anErrorHasOccurred;
 
-  /// No description provided for @somethingWentWrong.
+  /// No description provided for @cancel.
   ///
   /// In en, this message translates to:
-  /// **'Some thing went wrong'**
-  String get somethingWentWrong;
-
-  /// No description provided for @now.
-  ///
-  /// In en, this message translates to:
-  /// **'Now'**
-  String get now;
-
-  /// No description provided for @fewSecondsAgo.
-  ///
-  /// In en, this message translates to:
-  /// **'Few seconds ago'**
-  String get fewSecondsAgo;
-
-  /// No description provided for @minutesRelative.
-  ///
-  /// In en, this message translates to:
-  /// **'{minutes} minutes ago'**
-  String minutesRelative(Object minutes);
-
-  /// No description provided for @hoursRelative.
-  ///
-  /// In en, this message translates to:
-  /// **'{hours} hours ago'**
-  String hoursRelative(Object hours);
+  /// **'Cancel'**
+  String get cancel;
 
   /// No description provided for @daysRelative.
   ///
@@ -153,23 +129,23 @@ abstract class BlocArchitectureLocalizations {
   /// **'{days} days ago'**
   String daysRelative(Object days);
 
-  /// No description provided for @search.
+  /// No description provided for @fewSecondsAgo.
   ///
   /// In en, this message translates to:
-  /// **'Search'**
-  String get search;
+  /// **'Few seconds ago'**
+  String get fewSecondsAgo;
 
-  /// No description provided for @pleaseUpgradeToNewVersion.
+  /// No description provided for @hoursRelative.
   ///
   /// In en, this message translates to:
-  /// **'Please upgrade to new version'**
-  String get pleaseUpgradeToNewVersion;
+  /// **'{hours} hours ago'**
+  String hoursRelative(Object hours);
 
-  /// No description provided for @serverIsUnderMaintenance.
+  /// No description provided for @minutesRelative.
   ///
   /// In en, this message translates to:
-  /// **'Server is under maintenance'**
-  String get serverIsUnderMaintenance;
+  /// **'{minutes} minutes ago'**
+  String minutesRelative(Object minutes);
 
   /// No description provided for @networkConnectionIsUnstable.
   ///
@@ -177,11 +153,59 @@ abstract class BlocArchitectureLocalizations {
   /// **'Network connection is unstable'**
   String get networkConnectionIsUnstable;
 
-  /// No description provided for @anErrorHasOccurred.
+  /// No description provided for @no.
   ///
   /// In en, this message translates to:
-  /// **'An error has occurred'**
-  String get anErrorHasOccurred;
+  /// **'No'**
+  String get no;
+
+  /// No description provided for @noItemsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No items found'**
+  String get noItemsFound;
+
+  /// No description provided for @now.
+  ///
+  /// In en, this message translates to:
+  /// **'Now'**
+  String get now;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'Ok'**
+  String get ok;
+
+  /// No description provided for @pleaseUpgradeToNewVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Please upgrade to new version'**
+  String get pleaseUpgradeToNewVersion;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @serverIsUnderMaintenance.
+  ///
+  /// In en, this message translates to:
+  /// **'Server is under maintenance'**
+  String get serverIsUnderMaintenance;
+
+  /// No description provided for @somethingWentWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Some thing went wrong'**
+  String get somethingWentWrong;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
 
   /// No description provided for @yourSessionHasExpiredPleaseLogInAgain.
   ///

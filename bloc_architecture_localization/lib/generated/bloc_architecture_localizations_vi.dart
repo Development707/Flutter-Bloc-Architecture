@@ -5,26 +5,10 @@ class BlocArchitectureLocalizationsVi extends BlocArchitectureLocalizations {
   BlocArchitectureLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
-  String get noItemsFound => 'Không tìm thấy';
+  String get anErrorHasOccurred => 'Đã có lỗi xảy ra';
 
   @override
-  String get somethingWentWrong => 'Đã có lỗi xử lý';
-
-  @override
-  String get now => 'Bây giờ';
-
-  @override
-  String get fewSecondsAgo => 'Vài giây trước';
-
-  @override
-  String minutesRelative(Object minutes) {
-    return '$minutes phút trước';
-  }
-
-  @override
-  String hoursRelative(Object hours) {
-    return '$hours giờ trước';
-  }
+  String get cancel => 'Hủy';
 
   @override
   String daysRelative(Object days) {
@@ -32,19 +16,47 @@ class BlocArchitectureLocalizationsVi extends BlocArchitectureLocalizations {
   }
 
   @override
-  String get search => 'Tìm kiếm';
+  String get fewSecondsAgo => 'Vài giây trước';
 
   @override
-  String get pleaseUpgradeToNewVersion => 'Vui lòng nâng cấp phiên bản mới';
+  String hoursRelative(Object hours) {
+    return '$hours giờ trước';
+  }
 
   @override
-  String get serverIsUnderMaintenance => 'Máy chủ đang bảo trì';
+  String minutesRelative(Object minutes) {
+    return '$minutes phút trước';
+  }
 
   @override
   String get networkConnectionIsUnstable => 'Kết nối mạng không ổn định';
 
   @override
-  String get anErrorHasOccurred => 'Đã có lỗi xảy ra';
+  String get no => 'Không';
+
+  @override
+  String get noItemsFound => 'Không tìm thấy';
+
+  @override
+  String get now => 'Bây giờ';
+
+  @override
+  String get ok => 'Ok';
+
+  @override
+  String get pleaseUpgradeToNewVersion => 'Vui lòng nâng cấp phiên bản mới';
+
+  @override
+  String get search => 'Tìm kiếm';
+
+  @override
+  String get serverIsUnderMaintenance => 'Máy chủ đang bảo trì';
+
+  @override
+  String get somethingWentWrong => 'Đã có lỗi xử lý';
+
+  @override
+  String get yes => 'Có';
 
   @override
   String get yourSessionHasExpiredPleaseLogInAgain => 'Phiên của bạn đã hết hạn, vui lòng đăng nhập lại';
