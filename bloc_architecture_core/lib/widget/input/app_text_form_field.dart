@@ -192,7 +192,7 @@ class AppTextFormFieldState<T extends AppTextFormField> extends State<T> with Ap
       enabled: widget.enabled,
       minLines: widget.minLines,
       maxLength: widget.maxLength,
-      onEditingComplete: onEditingComplete,
+      onEditingComplete: widget.onEditingComplete,
       onFieldSubmitted: widget.onFieldSubmitted,
       inputFormatters: buildInputFormatters(context),
       // Scroll
@@ -295,6 +295,7 @@ mixin AppTextFormFieldHandle<T extends AppTextFormField> on State<T> {
   void onFocusChange() {
     if (!focusNode.hasFocus) {
       setState(() => fieldState?.validate());
+      widget.onEditingCompleteValue?.call(controller.value.text);
     }
     widget.onFocusChange?.call((focusNode.hasFocus, controller.value.text));
   }
@@ -321,12 +322,6 @@ mixin AppTextFormFieldHandle<T extends AppTextFormField> on State<T> {
         widget.onEditingEnd!(fieldState?.value ?? "");
       });
     }
-  }
-
-  /// Action when text field complete
-  void onEditingComplete() {
-    widget.onEditingCompleteValue?.call(controller.value.text);
-    widget.onEditingComplete?.call();
   }
 
   /// Action when text field tap

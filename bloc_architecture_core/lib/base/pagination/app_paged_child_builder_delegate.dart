@@ -45,7 +45,7 @@ Widget _pageErrorIndicator(BuildContext context) {
 }
 
 Widget _pageProgressIndicator(BuildContext context) {
-  return const CircularProgressIndicator();
+  return const Center(child: CircularProgressIndicator());
 }
 
 Widget _pageNoItemsFoundIndicator(BuildContext context) {
