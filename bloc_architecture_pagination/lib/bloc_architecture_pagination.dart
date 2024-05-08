@@ -4,6 +4,8 @@
 /// Bloc Architecture Pagination
 library bloc_architecture_pagination;
 
+export "package:infinite_scroll_pagination/infinite_scroll_pagination.dart";
+
 export "app_paged_child_builder_delegate.dart";
 export "app_pagination.dart";
 export "app_paging_controller.dart";

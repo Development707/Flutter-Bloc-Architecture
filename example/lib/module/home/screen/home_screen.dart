@@ -5,6 +5,7 @@ import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import "../../../core/base/base.dart";
 import "../../../core/config/config.dart";
 import "../../../core/theme/theme.dart";
+import "../../../router/router.dart";
 import "../../app/bloc/app_bloc.dart";
 import "../../auth/auth.dart";
 import "../bloc/home_bloc.dart";
@@ -20,6 +21,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends AppPageState<HomeScreen, HomeBloc> {
   final ValueNotifier<int> _stepController = ValueNotifier<int>(0);
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -31,6 +33,7 @@ class _HomeScreenState extends AppPageState<HomeScreen, HomeBloc> {
   void dispose() {
     super.dispose();
     _stepController.dispose();
+    _scrollController.dispose();
   }
 
   @override
@@ -39,7 +42,7 @@ class _HomeScreenState extends AppPageState<HomeScreen, HomeBloc> {
       disableGesturesOnLoad: true,
       appBar: AppBar(title: Text("Home screen - ${Config.environment?.name}")),
       body: GridView(
-        primary: true,
+        controller: _scrollController,
         padding: const EdgeInsets.all(10),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 500,
@@ -48,6 +51,10 @@ class _HomeScreenState extends AppPageState<HomeScreen, HomeBloc> {
         ),
         children: <Widget>[
           AppAssets.images.flutter.image(),
+          TextButton(
+            onPressed: () => const PaginationRoute().go(context),
+            child: const Text("PaginationScreen"),
+          ),
           TextButton(
             onPressed: () async => const AppAlertDialog(
               title: Text("Title"),

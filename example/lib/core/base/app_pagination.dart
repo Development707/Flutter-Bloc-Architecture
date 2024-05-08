@@ -32,3 +32,6 @@ class AppPagination<T> with _$AppPagination<T> implements pagination.AppPaginati
   @override
   bool get isLast => (pageNumber * pageSize) >= totalElements;
 }
+
+/// Controller for a paged widget.
+class AppPagingController<T> extends pagination.AppPagingController<T, AppPagination<T>> {}

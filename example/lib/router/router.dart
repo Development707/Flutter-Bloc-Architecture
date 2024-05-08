@@ -5,6 +5,7 @@ import "../core/config/config.dart";
 import "../module/app/app.dart";
 import "../module/auth/auth.dart";
 import "../module/home/home.dart";
+import "../module/pagination/pagination.dart";
 import "go_router_refresh_stream.dart";
 
 part "router.g.dart";
@@ -31,7 +32,9 @@ class AuthRoute extends GoRouteData {
 }
 
 /// [HomeRoute] for push, go, replace navigation
-@TypedGoRoute<HomeRoute>(path: "/home")
+@TypedGoRoute<HomeRoute>(path: "/home", routes: <TypedRoute<RouteData>>[
+  TypedGoRoute<PaginationRoute>(path: "pagination"),
+])
 class HomeRoute extends GoRouteData {
   /// Creates an HomeRoute
   const HomeRoute();
@@ -39,5 +42,16 @@ class HomeRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const HomeScreen();
+  }
+}
+
+/// [PaginationRoute] for push, go, replace navigation
+class PaginationRoute extends GoRouteData {
+  /// Creates an PaginationRoute
+  const PaginationRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const PaginationScreen();
   }
 }
