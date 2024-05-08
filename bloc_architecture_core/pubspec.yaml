@@ -7,8 +7,7 @@ homepage: https://github.com/development707/bloc_architecture
 repository: https://github.com/development707/bloc_architecture/tree/main/bloc_architecture_core
 
 environment:
-  sdk: ">=3.3.4 <4.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   bloc_architecture_localization:
@@ -20,7 +19,6 @@ dependencies:
   freezed_annotation: any
   get_it: any
   hydrated_bloc: any
-  infinite_scroll_pagination: any
   intl: any
   json_annotation: any
 

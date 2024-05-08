@@ -131,7 +131,7 @@ class _AppTextQuantityFieldState<T extends num> extends AppTextFormFieldState<Ap
   @override
   List<TextInputFormatter>? buildInputFormatters(BuildContext context) {
     return <TextInputFormatter>[
-      FilteringTextInputFormatter.allow(RegExp("[0-9\\${getDecimalSep()}]")),
+      FilteringTextInputFormatter.allow(RegExp("[0-9\\${getDecimalSep()}-]")),
       ...?super.buildInputFormatters(context),
     ];
   }
@@ -147,9 +147,9 @@ class _AppTextQuantityFieldState<T extends num> extends AppTextFormFieldState<Ap
     String text = controller.text;
 
     if (T == int) {
-      return (int.tryParse(text.replaceAll(RegExp("[^0-9]"), "")) ?? 0) as T;
+      return (int.tryParse(text.replaceAll(RegExp("[^0-9-]"), "")) ?? 0) as T;
     } else if (T == double) {
-      text = text.replaceAll(RegExp("[^0-9${getDecimalSep()}]"), "");
+      text = text.replaceAll(RegExp("[^0-9${getDecimalSep()}-]"), "");
       text = text.replaceAll(getDecimalSep(), ".");
 
       return (double.tryParse(text) ?? 0.0) as T;

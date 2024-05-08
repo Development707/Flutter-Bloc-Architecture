@@ -12,6 +12,7 @@ environment:
 dependencies:
   bloc_architecture_core: any
   bloc_architecture_localization: any
+  bloc_architecture_pagination: any
   bloc_concurrency: ^0.2.3
   dio: ^5.4.0
   flutter:
@@ -49,6 +50,8 @@ dependency_overrides:
     path: ../bloc_architecture_core
   bloc_architecture_localization:
     path: ../bloc_architecture_localization
+  bloc_architecture_pagination:
+    path: ../bloc_architecture_pagination
 
 flutter:
   generate: true

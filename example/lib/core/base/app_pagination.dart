@@ -1,11 +1,11 @@
-import "package:bloc_architecture_core/base/base.dart" as base;
+import "package:bloc_architecture_pagination/bloc_architecture_pagination.dart" as pagination;
 import "package:freezed_annotation/freezed_annotation.dart";
 
 part "app_pagination.freezed.dart";
 
 /// Model data for Pagination
 @freezed
-class AppPagination<T> with _$AppPagination<T> implements base.AppPagination<T> {
+class AppPagination<T> with _$AppPagination<T> implements pagination.AppPagination<T> {
   /// Creates a mode AppPagination
   const factory AppPagination({
     required List<T> data,

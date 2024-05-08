@@ -1,11 +1,10 @@
 // Copyright 2024 The Development707 Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
 
+import "package:bloc_architecture_core/bloc_architecture_core.dart";
 import "package:bloc_architecture_localization/bloc_architecture_localization.dart";
 import "package:flutter/material.dart";
 import "package:infinite_scroll_pagination/infinite_scroll_pagination.dart";
-
-import "../../extension/extension.dart";
 
 /// Supplies builders for the visual components of paged views.
 class AppPagedChildBuilderDelegate<T> extends PagedChildBuilderDelegate<T> {

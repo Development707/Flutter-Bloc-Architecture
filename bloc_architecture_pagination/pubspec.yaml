@@ -1,0 +1,17 @@
+name: bloc_architecture_pagination
+description: "Pagination for BLoC Architecture"
+version: 0.0.1
+homepage: https://github.com/development707/bloc_architecture
+repository: https://github.com/development707/bloc_architecture/tree/main/bloc_architecture_localization
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  bloc_architecture_core:
+    # path: ../bloc_architecture_core
+  bloc_architecture_localization:
+    # path: ../bloc_architecture_localization
+  flutter:
+    sdk: flutter
+  infinite_scroll_pagination: any
