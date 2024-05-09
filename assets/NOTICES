@@ -1875,6 +1875,7 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 bloc_architecture_core
 bloc_architecture_localization
 bloc_architecture_pagination
+bloc_architecture_widget
 
 The MIT License (MIT)
 
