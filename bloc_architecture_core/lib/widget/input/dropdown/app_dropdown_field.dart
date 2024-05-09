@@ -266,7 +266,10 @@ mixin AppDropdownFieldStateAsynchronous<T, W extends AppDropdownField<T>> on App
 
   @override
   Widget? get trailingIcon => cubit.state.maybeWhen(
-        loading: (double? progress) => Center(child: CircularProgressIndicator(value: progress)),
+        loading: (double? progress) => SizedBox.square(
+          dimension: 24,
+          child: CircularProgressIndicator(value: progress),
+        ),
         error: (_) => const Icon(Icons.error),
         orElse: () => widget.suffixIcon,
       );

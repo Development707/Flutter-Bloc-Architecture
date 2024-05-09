@@ -64,6 +64,7 @@ class AppAlertDialog extends StatelessWidget {
     this.closeOnTapOutside = true,
   }) : actions = <CupertinoDialogAction>[
           CupertinoDialogAction(
+            isDestructiveAction: true,
             child: Text(BlocArchitectureLocalizations.of(context)?.yes ?? "Yes"),
             onPressed: () => Navigator.of(context, rootNavigator: useRootNavigator).pop(true),
           ),
