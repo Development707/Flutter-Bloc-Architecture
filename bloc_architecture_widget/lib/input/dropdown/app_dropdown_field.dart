@@ -3,12 +3,10 @@
 
 import "dart:async";
 
+import "package:bloc_architecture_core/bloc_architecture_core.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:flutter_bloc/flutter_bloc.dart";
 
-import "../../../base/base.dart";
-import "../../../extension/context_extension.dart";
 import "../../app_dimens.dart";
 import "../app_text_form_field.dart";
 

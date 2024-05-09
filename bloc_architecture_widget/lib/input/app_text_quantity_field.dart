@@ -1,13 +1,13 @@
 // Copyright 2024 The Development707 Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
 
+import "package:bloc_architecture_core/bloc_architecture_core.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:intl/number_symbols.dart";
 import "package:intl/number_symbols_data.dart";
 
-import "../../extension/extension.dart";
 import "app_text_form_field.dart";
 
 /// Text field quantity with button

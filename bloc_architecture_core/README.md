@@ -9,7 +9,6 @@ Bloc Architecture Core is a set of packages in Dart for Flutter applications. It
 - [base](lib/base/base.dart): Contains base classes and utilities for Bloc Architecture Core.
 - [extension](lib/extension/extension.dart): Contains extension methods for Dart and Flutter.
 - [util](lib/util/util.dart): Contains utility classes and functions.
-- [widget](lib/widget/widget.dart): Contains widgets.
 
 ## How to use
 

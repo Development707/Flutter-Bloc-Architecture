@@ -4,7 +4,11 @@
 /// Bloc Architecture Core
 library bloc_architecture_core;
 
+export "package:flutter_bloc/flutter_bloc.dart";
+export "package:intl/intl.dart";
+export "package:intl/number_symbols.dart";
+export "package:intl/number_symbols_data.dart";
+
 export "base/base.dart";
 export "extension/extension.dart";
 export "util/util.dart";
-export "widget/widget.dart";
