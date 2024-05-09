@@ -1,5 +1,4 @@
 import "package:bloc_architecture_core/bloc_architecture_core.dart";
-import "package:flutter_bloc/flutter_bloc.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:injectable/injectable.dart";
 

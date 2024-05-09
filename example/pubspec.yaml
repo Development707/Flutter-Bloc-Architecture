@@ -13,6 +13,7 @@ dependencies:
   bloc_architecture_core: any
   bloc_architecture_localization: any
   bloc_architecture_pagination: any
+  bloc_architecture_widget: any
   bloc_concurrency: ^0.2.3
   dio: ^5.4.0
   flutter:
@@ -52,6 +53,8 @@ dependency_overrides:
     path: ../bloc_architecture_localization
   bloc_architecture_pagination:
     path: ../bloc_architecture_pagination
+  bloc_architecture_widget:
+    path: ../bloc_architecture_widget
 
 flutter:
   generate: true
