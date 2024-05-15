@@ -38,13 +38,13 @@ class StatusCubit extends Cubit<StatusState> {
     try {
       await doOnEventStart?.call();
 
-      if (autoHandleStatus) {
+      if (autoHandleStatus && !isClosed) {
         loadingEmitted();
       }
 
       final T value = await action.call();
 
-      if (autoHandleStatus) {
+      if (autoHandleStatus && !isClosed) {
         successEmitted();
       }
 
@@ -52,7 +52,7 @@ class StatusCubit extends Cubit<StatusState> {
     } on Object catch (error, stackTrace) {
       addError(error, stackTrace);
 
-      if (autoHandleStatus) {
+      if (autoHandleStatus && !isClosed) {
         errorEmitted(error);
       }
 

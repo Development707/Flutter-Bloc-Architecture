@@ -231,6 +231,58 @@ class AppDropdownFieldState<T, W extends AppDropdownField<T>> extends AppTextFor
   }
 }
 
+/// Handle status with form
+mixin AppDropdownFieldStateForm<T, W extends AppDropdownField<T>> on AppDropdownFieldState<T, W> {
+  @override
+  Widget build(BuildContext context) {
+    return FormField<String>(
+      key: formFieldKey,
+      initialValue: widget.initialValue,
+      validator: widget.validator,
+      enabled: widget.enabled ?? true,
+      autovalidateMode: AutovalidateMode.disabled,
+      restorationId: widget.restorationId,
+      onSaved: widget.onSaved,
+      builder: (FormFieldState<String> field) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            super.build(context),
+            if (field.hasError || widget.errorText != null)
+              Padding(
+                padding: const EdgeInsetsDirectional.only(top: 4, start: 4),
+                child: Text(
+                  widget.errorText ?? field.errorText ?? "",
+                  style: context.textTheme.bodySmall?.copyWith(color: context.colorScheme.error),
+                ),
+              ),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  void onControllerChange() {
+    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) {
+      super.onControllerChange();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    final T? initialSelection = widget.initialSelection;
+    if (initialSelection != null) {
+      WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) {
+        final String value = widget.buildLabel?.call(initialSelection, context) ?? initialSelection.toString();
+        fieldState?.didChange(value);
+      });
+    }
+  }
+}
+
 /// Handle status with cubit
 mixin AppDropdownFieldStateAsynchronous<T, W extends AppDropdownField<T>> on AppDropdownFieldState<T, W> {
   @override
