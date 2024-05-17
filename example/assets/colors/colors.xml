@@ -3,7 +3,7 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="black_70">#333333</color>
-    <color name="primary" type="material">#7BF3DA</color>
+    <color name="primary" type="material">#673AB7</color>
     <color name="secondary" type="material">#FC86A9</color>
     <color name="tertiary" type="material">#FBEDAC</color>
     <color name="error" type="material material-accent">#D32F2F</color>
