@@ -105,7 +105,7 @@ class _AppTextQuantityFieldState<T extends num> extends AppTextFormFieldState<Ap
   @override
   void initState() {
     super.initState();
-    controller.text = widget.initial?.toString() ?? "";
+    controller.text = widget.initial?.toDecimal() ?? "";
   }
 
   @override
@@ -158,14 +158,16 @@ class _AppTextQuantityFieldState<T extends num> extends AppTextFormFieldState<Ap
     return 0 as T;
   }
 
-  void onQuantityChanged([T? quantity]) {
-    quantity ??= getQuantity();
+  void onQuantityChanged([T? newQuantity]) {
+    T? quantity = newQuantity ?? getQuantity();
 
-    if (widget.minimun != null && quantity < widget.minimun!) {
-      return;
+    final T? minimun = widget.minimun;
+    if (minimun != null && quantity < minimun) {
+      quantity = minimun;
     }
-    if (widget.maximun != null && quantity > widget.maximun!) {
-      return;
+    final T? maximun = widget.maximun;
+    if (maximun != null && quantity > maximun) {
+      quantity = maximun;
     }
 
     controller.text = quantity.toDecimal();

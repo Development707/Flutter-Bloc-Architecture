@@ -99,7 +99,7 @@ class AppDialog extends StatelessWidget {
       alignment: alignment,
       insetPadding: dialogPadding,
       shape: RoundedRectangleBorder(borderRadius: radius),
-      backgroundColor: colors.background,
+      backgroundColor: colors.surface,
       clipBehavior: Clip.antiAlias,
       child: GestureDetector(
         onTap: FocusScope.of(context).unfocus,

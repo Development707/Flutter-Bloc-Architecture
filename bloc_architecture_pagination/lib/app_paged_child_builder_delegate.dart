@@ -35,7 +35,7 @@ Widget _pageErrorIndicator(BuildContext context) {
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Icon(Icons.refresh, color: colors.onBackground),
+        Icon(Icons.refresh, color: colors.onSurface),
         Text(l10n?.somethingWentWrong ?? "Something went wrong", style: context.textTheme.bodySmall),
         const SizedBox(height: 8),
       ],
@@ -55,7 +55,7 @@ Widget _pageNoItemsFoundIndicator(BuildContext context) {
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Icon(Icons.search, color: colors.onBackground),
+        Icon(Icons.search, color: colors.onSurface),
         Text(l10n?.noItemsFound ?? "No items found", style: context.textTheme.bodySmall),
         const SizedBox(height: 8),
       ],
