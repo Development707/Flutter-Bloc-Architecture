@@ -1,5 +1,14 @@
 # BLoC Architecture Flutter
 
+Dependency diagrams
+
+```mermaid
+flowchart LR
+  A(Localization) --> B(Core)
+  B --> C(Pagination)
+  B --> D(Widget)
+```
+
 ## [1. BaseBloc](./bloc_architecture_core/lib/base/bloc/base_bloc.dart)
 
 Base config bloc for app
