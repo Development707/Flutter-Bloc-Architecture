@@ -15,7 +15,10 @@ class StatusCubit extends Cubit<StatusState> {
   StatusCubit() : super(const StatusState.inital());
 
   /// Change state to loading
-  void loadingEmitted({double? progress}) => emit(StatusState.loading(progress));
+  void loadingEmitted({bool useOverlay = true, double? progress}) => emit(StatusState.loading(
+        useOverlay: useOverlay,
+        progress: progress,
+      ));
 
   /// Change state to error
   void errorEmitted(Object error) => emit(StatusState.error(error));

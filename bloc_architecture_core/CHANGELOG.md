@@ -1,3 +1,7 @@
+## 0.0.7
+
+- Support not overlay loading
+
 ## 0.0.6
 
 - Remove widget

@@ -4,7 +4,10 @@ part of "status_cubit.dart";
 @freezed
 class StatusState with _$StatusState {
   /// Creates a loading state
-  const factory StatusState.loading([double? progress]) = _Loading;
+  const factory StatusState.loading({
+    required bool useOverlay,
+    double? progress,
+  }) = _Loading;
 
   /// Creates a success state
   const factory StatusState.success() = _Success;
@@ -18,7 +21,7 @@ class StatusState with _$StatusState {
   const StatusState._();
 
   /// Check state is loading
-  bool get isLoading => maybeWhen(loading: (_) => true, orElse: () => false);
+  bool get isLoading => maybeWhen(loading: (_, __) => true, orElse: () => false);
 
   /// Check state is success
   bool get isSuccess => maybeWhen(success: () => true, orElse: () => false);
@@ -33,5 +36,8 @@ class StatusState with _$StatusState {
   Object? get error => whenOrNull(error: (Object error) => error);
 
   /// Get progress of status
-  double? get progress => whenOrNull(loading: (double? progress) => progress);
+  double? get progress => whenOrNull(loading: (_, double? progress) => progress);
+
+  /// Get useOverlay of status
+  bool? get useOverlay => whenOrNull(loading: (bool useOverlay, _) => useOverlay);
 }

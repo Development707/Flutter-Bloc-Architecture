@@ -315,14 +315,17 @@ mixin AppDropdownFieldStateAsynchronous<T, W extends AppDropdownField<T>> on App
   }
 
   @override
-  Widget? get trailingIcon => cubit.state.maybeWhen(
-        loading: (double? progress) => SizedBox.square(
-          dimension: 24,
-          child: CircularProgressIndicator(value: progress),
-        ),
-        error: (_) => const Icon(Icons.error),
-        orElse: () => widget.suffixIcon,
+  Widget? get trailingIcon {
+    if (cubit.state.isError) {
+      return const Icon(Icons.error);
+    } else if (cubit.state.isLoading) {
+      return SizedBox.square(
+        dimension: 24,
+        child: CircularProgressIndicator(value: cubit.state.progress),
       );
+    }
+    return widget.suffixIcon;
+  }
 
   /// Load menu entries when the widget is created
   Future<void> loadMenuEntries() => cubit.runCubitCatching(

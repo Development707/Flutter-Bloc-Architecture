@@ -73,16 +73,19 @@ abstract class BasePageStateDelegate<W extends StatefulWidget, B extends BaseBlo
   /// Build animation loading of page
   @protected
   Widget handleBuilder(BuildContext context, StatusState state) {
-    return Stack(
-      alignment: Alignment.center,
-      children: <Widget>[
-        RepaintBoundary(child: buildPage(context)),
-        Visibility(
-          visible: state.isLoading,
-          child: CircularProgressIndicator(value: state.progress),
-        ),
-      ],
-    );
+    if (state.useOverlay ?? false) {
+      return Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          RepaintBoundary(child: buildPage(context)),
+          Visibility(
+            visible: state.isLoading,
+            child: CircularProgressIndicator(value: state.progress),
+          ),
+        ],
+      );
+    }
+    return buildPage(context);
   }
 
   /// Build widget of page

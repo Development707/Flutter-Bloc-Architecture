@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$StatusState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double? progress) loading,
+    required TResult Function(bool useOverlay, double? progress) loading,
     required TResult Function() success,
     required TResult Function(Object error) error,
     required TResult Function() inital,
@@ -26,7 +26,7 @@ mixin _$StatusState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double? progress)? loading,
+    TResult? Function(bool useOverlay, double? progress)? loading,
     TResult? Function()? success,
     TResult? Function(Object error)? error,
     TResult? Function()? inital,
@@ -34,7 +34,7 @@ mixin _$StatusState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double? progress)? loading,
+    TResult Function(bool useOverlay, double? progress)? loading,
     TResult Function()? success,
     TResult Function(Object error)? error,
     TResult Function()? inital,
@@ -92,7 +92,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
           _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
       __$$LoadingImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({double? progress});
+  $Res call({bool useOverlay, double? progress});
 }
 
 /// @nodoc
@@ -106,10 +106,15 @@ class __$$LoadingImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? useOverlay = null,
     Object? progress = freezed,
   }) {
     return _then(_$LoadingImpl(
-      freezed == progress
+      useOverlay: null == useOverlay
+          ? _value.useOverlay
+          : useOverlay // ignore: cast_nullable_to_non_nullable
+              as bool,
+      progress: freezed == progress
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as double?,
@@ -120,14 +125,16 @@ class __$$LoadingImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadingImpl extends _Loading {
-  const _$LoadingImpl([this.progress]) : super._();
+  const _$LoadingImpl({required this.useOverlay, this.progress}) : super._();
 
+  @override
+  final bool useOverlay;
   @override
   final double? progress;
 
   @override
   String toString() {
-    return 'StatusState.loading(progress: $progress)';
+    return 'StatusState.loading(useOverlay: $useOverlay, progress: $progress)';
   }
 
   @override
@@ -135,12 +142,14 @@ class _$LoadingImpl extends _Loading {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadingImpl &&
+            (identical(other.useOverlay, useOverlay) ||
+                other.useOverlay == useOverlay) &&
             (identical(other.progress, progress) ||
                 other.progress == progress));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, progress);
+  int get hashCode => Object.hash(runtimeType, useOverlay, progress);
 
   @JsonKey(ignore: true)
   @override
@@ -151,36 +160,36 @@ class _$LoadingImpl extends _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double? progress) loading,
+    required TResult Function(bool useOverlay, double? progress) loading,
     required TResult Function() success,
     required TResult Function(Object error) error,
     required TResult Function() inital,
   }) {
-    return loading(progress);
+    return loading(useOverlay, progress);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double? progress)? loading,
+    TResult? Function(bool useOverlay, double? progress)? loading,
     TResult? Function()? success,
     TResult? Function(Object error)? error,
     TResult? Function()? inital,
   }) {
-    return loading?.call(progress);
+    return loading?.call(useOverlay, progress);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double? progress)? loading,
+    TResult Function(bool useOverlay, double? progress)? loading,
     TResult Function()? success,
     TResult Function(Object error)? error,
     TResult Function()? inital,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(progress);
+      return loading(useOverlay, progress);
     }
     return orElse();
   }
@@ -224,9 +233,11 @@ class _$LoadingImpl extends _Loading {
 }
 
 abstract class _Loading extends StatusState {
-  const factory _Loading([final double? progress]) = _$LoadingImpl;
+  const factory _Loading(
+      {required final bool useOverlay, final double? progress}) = _$LoadingImpl;
   const _Loading._() : super._();
 
+  bool get useOverlay;
   double? get progress;
   @JsonKey(ignore: true)
   _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
@@ -271,7 +282,7 @@ class _$SuccessImpl extends _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double? progress) loading,
+    required TResult Function(bool useOverlay, double? progress) loading,
     required TResult Function() success,
     required TResult Function(Object error) error,
     required TResult Function() inital,
@@ -282,7 +293,7 @@ class _$SuccessImpl extends _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double? progress)? loading,
+    TResult? Function(bool useOverlay, double? progress)? loading,
     TResult? Function()? success,
     TResult? Function(Object error)? error,
     TResult? Function()? inital,
@@ -293,7 +304,7 @@ class _$SuccessImpl extends _Success {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double? progress)? loading,
+    TResult Function(bool useOverlay, double? progress)? loading,
     TResult Function()? success,
     TResult Function(Object error)? error,
     TResult Function()? inital,
@@ -410,7 +421,7 @@ class _$ErrorImpl extends _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double? progress) loading,
+    required TResult Function(bool useOverlay, double? progress) loading,
     required TResult Function() success,
     required TResult Function(Object error) error,
     required TResult Function() inital,
@@ -421,7 +432,7 @@ class _$ErrorImpl extends _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double? progress)? loading,
+    TResult? Function(bool useOverlay, double? progress)? loading,
     TResult? Function()? success,
     TResult? Function(Object error)? error,
     TResult? Function()? inital,
@@ -432,7 +443,7 @@ class _$ErrorImpl extends _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double? progress)? loading,
+    TResult Function(bool useOverlay, double? progress)? loading,
     TResult Function()? success,
     TResult Function(Object error)? error,
     TResult Function()? inital,
@@ -530,7 +541,7 @@ class _$InitalImpl extends _Inital {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double? progress) loading,
+    required TResult Function(bool useOverlay, double? progress) loading,
     required TResult Function() success,
     required TResult Function(Object error) error,
     required TResult Function() inital,
@@ -541,7 +552,7 @@ class _$InitalImpl extends _Inital {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double? progress)? loading,
+    TResult? Function(bool useOverlay, double? progress)? loading,
     TResult? Function()? success,
     TResult? Function(Object error)? error,
     TResult? Function()? inital,
@@ -552,7 +563,7 @@ class _$InitalImpl extends _Inital {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double? progress)? loading,
+    TResult Function(bool useOverlay, double? progress)? loading,
     TResult Function()? success,
     TResult Function(Object error)? error,
     TResult Function()? inital,
