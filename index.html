@@ -34,10 +34,15 @@
 
     <script>
       // The value below is injected by flutter build, do not touch.
-      const serviceWorkerVersion = "3367654915";
+      const serviceWorkerVersion = "3830937538";
     </script>
     <!-- This script adds the flutter initialization JS code -->
     <script src="flutter.js" defer></script>
+    <script> // Flutter web status bar in iOS (Safari)
+      function setMetaThemeColor(color) {
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", color);
+      }
+    </script>
   </head>
 
   <body>
