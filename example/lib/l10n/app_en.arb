@@ -2,12 +2,10 @@
   "@@locale": "en",
   "helloWorld": "Hello world",
   "logout": "Logout",
-  "versionV": "Version v{version}",
-  "pleaseEnterPassword": "Please enter password",
   "networkConnectionIsUnstable": "Network connection is unstable",
+  "pleaseEnterPassword": "Please enter password",
   "pleaseUpgradeToNewVersion": "Please upgrade to new version",
   "serverIsUnderMaintenance": "Server is under maintenance",
+  "versionV": "Version v{version}",
   "yourSessionHasExpiredPleaseLogInAgain": "Your session has expired, please log in again"
-
-
 }

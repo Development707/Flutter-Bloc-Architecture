@@ -1,36 +1,27 @@
 import "package:bloc_architecture_pagination/bloc_architecture_pagination.dart";
-import "package:freezed_annotation/freezed_annotation.dart";
 
-part "app_pagination.freezed.dart";
+import "../../data/model/model.dart";
 
 /// Model data for Pagination
-@freezed
-class AppPagination<T> with _$AppPagination<T> implements BasePagination<T> {
-  /// Creates a mode AppPagination
-  const factory AppPagination({
-    required List<T> data,
-    required int pageNumber,
-    @Default(20) int pageSize,
-    @Default(0) int totalElements,
-  }) = _AppPagination<T>;
-
-  const AppPagination._();
+mixin AppPagination<T> on AppResponse<T> implements BasePagination<T> {
+  @override
+  List<T> get data => whenOrNull(page: (List<T> data, _, __, ___) => data) ?? List<T>.empty();
 
   /// Number of next page
   @override
-  int get nextPageNumber => pageNumber + 1;
+  int get nextPageNumber => (pageNumber ?? 0) + 1;
 
   /// Number of previous page
   @override
-  int get previousPageNumber => isFirst ? 0 : pageNumber - 1;
+  int get previousPageNumber => isFirst ? 0 : (pageNumber ?? 0) - 1;
 
   /// Check is first page
   @override
-  bool get isFirst => pageNumber == 0;
+  bool get isFirst => (pageNumber ?? 0) == 0;
 
   /// Check is last page
   @override
-  bool get isLast => (pageNumber * pageSize) >= totalElements;
+  bool get isLast => ((pageNumber ?? 0) * (pageSize ?? 0)) >= (totalElements ?? 0);
 }
 
 /// Controller for a paged widget.

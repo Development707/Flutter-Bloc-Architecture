@@ -1,32 +1,38 @@
 import "package:dio/dio.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 
+import "../../../core/base/app_pagination.dart";
+
 part "app_response.freezed.dart";
 part "app_response.g.dart";
 
 /// App response app
-@Freezed(genericArgumentFactories: true, unionKey: "success")
-sealed class AppResponse<T> with _$AppResponse<T> {
-  /// unionKey: true
+@Freezed(genericArgumentFactories: true, unionKey: "status")
+class AppResponse<T> with _$AppResponse<T> {
+  /// unionKey: data
   ///
-  /// Show when response field is success: true
-  @FreezedUnionValue("true")
-  const factory AppResponse.success(T? data) = _AppResponseSuccess<T>;
+  /// Show when response field is success
+  const factory AppResponse.data(T data) = AppResponseData<T>;
 
-  /// unionKey: false
+  /// unionKey: page
   ///
-  /// Show when response field is success: false
-  @FreezedUnionValue("false")
-  const factory AppResponse.failure(String? message) = _AppResponseFailure<T>;
+  /// Show when response field is page
+  @With.fromString("AppPagination<T>")
+  const factory AppResponse.page(List<T> data, int pageNumber, int pageSize, int totalElements) = AppResponsePage<T>;
+
+  /// unionKey: failure
+  ///
+  /// Show when response field is failure
+  const factory AppResponse.failure(String message) = _AppResponseFailure<T>;
 
   /// unionKey: unauthorized
   ///
-  /// Show when response field is success: unauthorized
+  /// Show when response field is unauthorized
   const factory AppResponse.unauthorized() = _AppResponseUnauthorized<T>;
 
   /// unionKey: maintenance
   ///
-  /// Show when response field is success: maintenance
+  /// Show when response field is maintenance
   const factory AppResponse.maintenance() = _AppResponseMaintenance<T>;
 
   /// unionKey: error
@@ -96,9 +102,24 @@ sealed class AppResponse<T> with _$AppResponse<T> {
 
     return AppResponse<T>.error(error.runtimeType.toString());
   }
+}
 
+/// Common get value
+extension CommonAppResponse<T> on AppResponse<T> {
   /// Get data
-  T? get data => whenOrNull(success: (T? data) => data);
+  T? get data => whenOrNull(data: (T data) => data);
+
+  /// Get data page
+  List<T>? get dataPage => whenOrNull(page: (List<T> data, _, __, ___) => data);
+
+  /// Page number
+  int? get pageNumber => whenOrNull(page: (_, int pageNumber, __, ___) => pageNumber);
+
+  /// Page size
+  int? get pageSize => whenOrNull(page: (_, __, int pageSize, ___) => pageSize);
+
+  /// Total elements
+  int? get totalElements => whenOrNull(page: (_, __, ___, int totalElements) => totalElements);
 
   /// Get status code
   int? get statusCode => whenOrNull(errorHttp: (int? statusCode, String? statusMessage) => statusCode);

@@ -2,9 +2,10 @@
   "@@locale": "vi",
   "helloWorld": "Xin chào thế giới",
   "logout": "Đăng xuất",
-  "versionV": "Phiên bản v{version}",
+  "networkConnectionIsUnstable": "Kết nối mạng không ổn định",
   "pleaseEnterPassword": "Xin vui lòng nhập mật khẩu",
   "pleaseUpgradeToNewVersion": "Vui lòng nâng cấp phiên bản mới",
   "serverIsUnderMaintenance": "Máy chủ đang bảo trì",
+  "versionV": "Phiên bản v{version}",
   "yourSessionHasExpiredPleaseLogInAgain": "Phiên của bạn đã hết hạn, vui lòng đăng nhập lại"
 }

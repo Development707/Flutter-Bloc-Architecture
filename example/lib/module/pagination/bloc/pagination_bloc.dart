@@ -4,6 +4,7 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:injectable/injectable.dart";
 
 import "../../../core/base/base.dart";
+import "../../../data/model/model.dart";
 
 part "pagination_event.dart";
 part "pagination_state.dart";
@@ -28,11 +29,7 @@ class PaginationBloc extends BaseBloc<PaginationEvent, PaginationState> {
         ),
         autoHandleStatus: false,
         doOnSuccess: (List<String> value) => pagingController.onSuccess(
-          AppPagination<String>(
-            data: value,
-            pageNumber: event.pageNumber,
-            totalElements: 100,
-          ),
+          AppResponsePage<String>(value, event.pageNumber, 10, 100),
         ),
         doOnError: pagingController.onError,
       );

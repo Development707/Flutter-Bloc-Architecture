@@ -32,7 +32,8 @@ abstract class AppPageState<Widget extends StatefulWidget, Bloc extends BaseBloc
     if (state.isError) {
       final ScaffoldMessengerState? messenger = ScaffoldMessenger.maybeOf(context);
       final String? message = AppResponse<Object?>.formError(state.error!, (Object? json) => json).when<String?>(
-        success: (Object? data) => null,
+        data: (Object? data) => null,
+        page: (Object? data, int pageNumber, int pageSize, int totalElements) => null,
         failure: (String? message) => message,
         error: (String? type) => type,
         errorHttp: (int? statusCode, String? statusMessage) => "$statusCode: $statusMessage",
