@@ -90,9 +90,9 @@
         "apk",
         "--release",
         "--flavor",
-        "development",
+        "${input:flavor}",
         "--dart-define-from-file",
-        "env-dev.json"
+        ".${input:flavor}.env"
       ],
       "options": {
         "cwd": "${workspaceFolder}/example"
@@ -109,9 +109,9 @@
         "ipa",
         "--release",
         "--flavor",
-        "development",
+        "${input:flavor}",
         "--dart-define-from-file",
-        "env-dev.json"
+        ".${input:flavor}.env"
       ],
       "options": {
         "cwd": "${workspaceFolder}/example"
@@ -145,5 +145,17 @@
         "cwd": "${workspaceFolder}/example"
       }
     }
+  ],
+  "inputs": [
+    {
+      "id": "flavor",
+      "description": "Build a custom app flavor as defined by platform-specific build setup.",
+      "default": "dev",
+      "type": "pickString",
+      "options": [
+        "dev",
+        "prod"
+      ]
+    },
   ]
 }

@@ -92,13 +92,13 @@ android {
     flavorDimensions "default"
     
     productFlavors {
-        production {
+        prod {
             dimension "default"
             resValue "string", "APP_DISPLAY_NAME", "Example"
             applicationIdSuffix ""
         }
 
-        development {
+        dev {
             dimension "default"
             resValue "string", "APP_DISPLAY_NAME", "Dev Example"
             applicationIdSuffix ".dev"

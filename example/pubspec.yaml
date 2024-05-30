@@ -15,6 +15,7 @@ dependencies:
   bloc_architecture_pagination: any
   bloc_architecture_widget: any
   bloc_concurrency: ^0.2.3
+  cupertino_icons: ^1.0.8
   dio: ^5.4.0
   flutter:
     sdk: flutter

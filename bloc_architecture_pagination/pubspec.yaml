@@ -15,3 +15,6 @@ dependencies:
   flutter:
     sdk: flutter
   infinite_scroll_pagination: any
+
+flutter:
+  uses-material-design: true
