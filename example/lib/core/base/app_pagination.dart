@@ -1,11 +1,11 @@
-import "package:bloc_architecture_pagination/bloc_architecture_pagination.dart" as pagination;
+import "package:bloc_architecture_pagination/bloc_architecture_pagination.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 
 part "app_pagination.freezed.dart";
 
 /// Model data for Pagination
 @freezed
-class AppPagination<T> with _$AppPagination<T> implements pagination.AppPagination<T> {
+class AppPagination<T> with _$AppPagination<T> implements BasePagination<T> {
   /// Creates a mode AppPagination
   const factory AppPagination({
     required List<T> data,
@@ -34,4 +34,10 @@ class AppPagination<T> with _$AppPagination<T> implements pagination.AppPaginati
 }
 
 /// Controller for a paged widget.
-class AppPagingController<T> extends pagination.AppPagingController<T, AppPagination<T>> {}
+class AppPagingController<T> extends BasePagingController<T, AppPagination<T>> {}
+
+/// AppPagedChildBuilderDelegate
+class AppPagedChildBuilderDelegate<T> extends BasePagedChildBuilderDelegate<T> {
+  /// Create a AppPagedChildBuilderDelegate
+  AppPagedChildBuilderDelegate({required super.itemBuilder});
+}

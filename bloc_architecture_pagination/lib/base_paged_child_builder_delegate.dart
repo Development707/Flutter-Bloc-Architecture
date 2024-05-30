@@ -7,9 +7,9 @@ import "package:flutter/material.dart";
 import "package:infinite_scroll_pagination/infinite_scroll_pagination.dart";
 
 /// Supplies builders for the visual components of paged views.
-class AppPagedChildBuilderDelegate<T> extends PagedChildBuilderDelegate<T> {
+class BasePagedChildBuilderDelegate<T> extends PagedChildBuilderDelegate<T> {
   /// Creates a PagedChildBuilderDelegate.
-  AppPagedChildBuilderDelegate({
+  BasePagedChildBuilderDelegate({
     required super.itemBuilder,
 
     /// Error

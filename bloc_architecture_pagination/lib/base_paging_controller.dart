@@ -3,14 +3,14 @@
 
 import "package:infinite_scroll_pagination/infinite_scroll_pagination.dart";
 
-import "app_pagination.dart";
+import "base_pagination.dart";
 
 /// A controller for a paged widget.
 ///
 /// If you modify the [itemList], [error] or [nextPageKey] properties, the paged widget will be notified and will update itself appropriately.
-class AppPagingController<T, P extends AppPagination<T>> extends PagingController<int, T> {
-  /// Creates an AppPagingController
-  AppPagingController({
+class BasePagingController<T, P extends BasePagination<T>> extends PagingController<int, T> {
+  /// Creates an BasePagingController
+  BasePagingController({
     super.firstPageKey = 0,
     super.invisibleItemsThreshold = 5,
   });

@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
 
 /// Model data for Pagination
-abstract class AppPagination<T> {
-  /// Creates a mode AppPagination
-  const AppPagination();
+abstract class BasePagination<T> {
+  /// Creates a mode BasePagination
+  const BasePagination();
 
   /// Get data
   List<T> get data;
