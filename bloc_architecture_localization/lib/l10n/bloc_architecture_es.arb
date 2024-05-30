@@ -11,10 +11,7 @@
   "noItemsFound": "No se encontraron elementos",
   "now": "Ahora",
   "ok": "OK",
-  "pleaseUpgradeToNewVersion": "Por favor, actualiza a una nueva versión",
   "search": "Buscar",
-  "serverIsUnderMaintenance": "El servidor está en mantenimiento",
   "somethingWentWrong": "Algo salió mal",
-  "yes": "Si",
-  "yourSessionHasExpiredPleaseLogInAgain": "Su sesión ha expirado. Por favor, inicie sesión de nuevo"
+  "yes": "Si"
 }

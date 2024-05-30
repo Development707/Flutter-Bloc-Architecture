@@ -11,18 +11,16 @@ mixin ThemeMixin<T extends StatefulWidget> on State<T> {
   late ThemeData theme;
 
   /// A set of 30 colors based on the Material spec that can be used to configure the color properties of most components.
-  late ColorScheme colorScheme;
+  ColorScheme get colorScheme => theme.colorScheme;
 
   /// Material design text theme.
-  late TextTheme textTheme;
+  TextTheme get textTheme => theme.textTheme;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
     theme = context.theme;
-    colorScheme = theme.colorScheme;
-    textTheme = theme.textTheme;
   }
 
   @override

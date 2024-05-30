@@ -11,10 +11,7 @@
   "noItemsFound": "ไม่พบข้อมูล",
   "now": "ตอนนี้",
   "ok": "ตกลง",
-  "pleaseUpgradeToNewVersion": "กรุณาอัปเดตเป็นเวอร์ชันใหม่",
   "search": "ค้นหา",
-  "serverIsUnderMaintenance": "เซิร์ฟเวอร์อยู่ในสถานะการบำรุงรักษา",
   "somethingWentWrong": "เกิดข้อผิดพลาดบางอย่าง",
-  "yes": "ใช่",
-  "yourSessionHasExpiredPleaseLogInAgain": "เซสชันของคุณหมดอายุกรุณาลงชื่อเข้าสู่ระบบอีกครั้ง"
+  "yes": "ใช่"
 }

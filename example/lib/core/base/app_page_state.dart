@@ -1,5 +1,4 @@
 import "package:bloc_architecture_core/base/base.dart";
-import "package:bloc_architecture_localization/bloc_architecture_localization.dart";
 import "package:flutter/foundation.dart";
 
 import "package:flutter/material.dart";
@@ -31,17 +30,16 @@ abstract class AppPageState<Widget extends StatefulWidget, Bloc extends BaseBloc
   void handleListener(BuildContext context, StatusState state) {
     super.handleListener(context, state);
     if (state.isError) {
-      final BlocArchitectureLocalizations? l10n = BlocArchitectureLocalizations.of(context);
       final ScaffoldMessengerState? messenger = ScaffoldMessenger.maybeOf(context);
       final String? message = AppResponse<Object?>.formError(state.error!, (Object? json) => json).when<String?>(
         success: (Object? data) => null,
         failure: (String? message) => message,
         error: (String? type) => type,
         errorHttp: (int? statusCode, String? statusMessage) => "$statusCode: $statusMessage",
-        errorConnection: () => l10n?.networkConnectionIsUnstable,
-        errorType: () => l10n?.pleaseUpgradeToNewVersion,
-        unauthorized: () => l10n?.yourSessionHasExpiredPleaseLogInAgain,
-        maintenance: () => l10n?.serverIsUnderMaintenance,
+        errorConnection: () => l10n.networkConnectionIsUnstable,
+        errorType: () => l10n.pleaseUpgradeToNewVersion,
+        unauthorized: () => l10n.yourSessionHasExpiredPleaseLogInAgain,
+        maintenance: () => l10n.serverIsUnderMaintenance,
       );
 
       if (message != null) {

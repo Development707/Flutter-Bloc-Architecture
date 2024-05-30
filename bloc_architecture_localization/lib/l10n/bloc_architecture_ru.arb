@@ -11,10 +11,7 @@
   "noItemsFound": "Ничего не найдено",
   "now": "Теперь",
   "ok": "Ок",
-  "pleaseUpgradeToNewVersion": "Пожалуйста, обновите версию",
   "search": "Поиск",
-  "serverIsUnderMaintenance": "Сервер находится в режиме обслуживания",
   "somethingWentWrong": "Что-то пошло не так",
-  "yes": "Да",
-  "yourSessionHasExpiredPleaseLogInAgain": "Сессия истекла, пожалуйста, войдите в систему снова"
+  "yes": "Да"
 }

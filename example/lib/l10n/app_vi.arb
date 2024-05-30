@@ -3,5 +3,8 @@
   "helloWorld": "Xin chào thế giới",
   "logout": "Đăng xuất",
   "versionV": "Phiên bản v{version}",
-  "pleaseEnterPassword": "Xin vui lòng nhập mật khẩu"
+  "pleaseEnterPassword": "Xin vui lòng nhập mật khẩu",
+  "pleaseUpgradeToNewVersion": "Vui lòng nâng cấp phiên bản mới",
+  "serverIsUnderMaintenance": "Máy chủ đang bảo trì",
+  "yourSessionHasExpiredPleaseLogInAgain": "Phiên của bạn đã hết hạn, vui lòng đăng nhập lại"
 }

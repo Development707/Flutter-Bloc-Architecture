@@ -11,10 +11,7 @@
   "noItemsFound": "Keine Items gefunden",
   "now": "Jetzt",
   "ok": "OK",
-  "pleaseUpgradeToNewVersion": "Bitte auf eine neue Version aktualisieren",
   "search": "Suche",
-  "serverIsUnderMaintenance": "Der Server liegt unter Wartung",
   "somethingWentWrong": "Etwas ist schiefgelaufen",
-  "yes": "Ja",
-  "yourSessionHasExpiredPleaseLogInAgain": "Ihre Sitzung ist abgelaufen, bitte erneut einloggen"
+  "yes": "Ja"
 }

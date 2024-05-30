@@ -11,10 +11,7 @@
   "noItemsFound": "Không tìm thấy",
   "now": "Bây giờ",
   "ok": "Ok",
-  "pleaseUpgradeToNewVersion": "Vui lòng nâng cấp phiên bản mới",
   "search": "Tìm kiếm",
-  "serverIsUnderMaintenance": "Máy chủ đang bảo trì",
-  "somethingWentWrong": "Đã có lỗi xử lý",
-  "yes": "Có",
-  "yourSessionHasExpiredPleaseLogInAgain": "Phiên của bạn đã hết hạn, vui lòng đăng nhập lại"
+  "somethingWentWrong": "Đã có lỗi xảy ra",
+  "yes": "Có"
 }

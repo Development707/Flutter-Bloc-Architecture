@@ -6,15 +6,11 @@
   "fewSecondsAgo": "Few seconds ago",
   "hoursRelative": "{hours} hours ago",
   "minutesRelative": "{minutes} minutes ago",
-  "networkConnectionIsUnstable": "Network connection is unstable",
   "no": "No",
   "noItemsFound": "No items found",
   "now": "Now",
   "ok": "Ok",
-  "pleaseUpgradeToNewVersion": "Please upgrade to new version",
   "search": "Search",
-  "serverIsUnderMaintenance": "Server is under maintenance",
   "somethingWentWrong": "Some thing went wrong",
-  "yes": "Yes",
-  "yourSessionHasExpiredPleaseLogInAgain": "Your session has expired, please log in again"
+  "yes": "Yes"
 }

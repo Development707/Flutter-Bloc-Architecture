@@ -11,10 +11,7 @@
   "noItemsFound": "ບໍ່ພົບລາຍການ",
   "now": "ຫາງນາມາຫຼ້",
   "ok": "ຕົກລົງ",
-  "pleaseUpgradeToNewVersion": "ກະລຸນາປ່ຽນການອັດຕາເຂົ້າໃຊ້ຂອບແປງໃຊ້ເວີທີທີ່",
   "search": "ຄົ້ນຫາ",
-  "serverIsUnderMaintenance": "ລະບຸດຜົນເຄື່ອໄດ້ເຈົ້າຂອງພະບຍດຕາມ",
   "somethingWentWrong": "ການອາດແພັເພາບລົງໃຈ",
-  "yes": "ແມ່",
-  "yourSessionHasExpiredPleaseLogInAgain": "ວົງທີ່ທີ່ປົງກະເປທກ່ອນອັບການເຂົ້າໃຊ້ການອັບການອັບການແລ້ວ"
+  "yes": "ແມ່"
 }

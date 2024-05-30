@@ -5,8 +5,6 @@ import "package:bloc_architecture_core/bloc_architecture_core.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:intl/number_symbols.dart";
-import "package:intl/number_symbols_data.dart";
 
 import "app_text_form_field.dart";
 

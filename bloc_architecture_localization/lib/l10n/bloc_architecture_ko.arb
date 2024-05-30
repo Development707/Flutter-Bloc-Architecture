@@ -11,10 +11,7 @@
   "noItemsFound": "이두 교체가 없습니다.",
   "now": "지금",
   "ok": "OK",
-  "pleaseUpgradeToNewVersion": "최신 버전으로 업데이트해주세요",
   "search": "검색",
-  "serverIsUnderMaintenance": "서버가 점검중입니다.",
   "somethingWentWrong": "예기치 않은 오류가 발생했습니다.",
-  "yes": "是",
-  "yourSessionHasExpiredPleaseLogInAgain": "세션이 만료되었습니다. 다시 로그인 해주세요"
+  "yes": "是"
 }

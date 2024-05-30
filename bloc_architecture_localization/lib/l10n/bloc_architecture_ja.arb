@@ -11,10 +11,7 @@
   "noItemsFound": "見つかりませんでした",
   "now": "今",
   "ok": "OK",
-  "pleaseUpgradeToNewVersion": "新しいバージョンにアップグレードしてください",
   "search": "検索",
-  "serverIsUnderMaintenance": "サーバーはメンテナンス中です",
   "somethingWentWrong": "何かが間違ったようです",
-  "yes": "はい",
-  "yourSessionHasExpiredPleaseLogInAgain": "あなたのセッションは期限切れです、再度ログインしてください"
+  "yes": "はい"
 }
