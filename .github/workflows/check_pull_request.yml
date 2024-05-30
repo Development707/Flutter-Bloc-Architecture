@@ -3,7 +3,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Check-Pull-Request
+name: Check
 
 on:
   pull_request:
@@ -15,6 +15,29 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Check pull request title
+        run: |
+          if [[ ! $github.event.pull_request.title =~ ^(\[[A-Za-z]+\])+\s.+$ ]]; then
+            echo "The pull request title did not match the expected format. Please check rule in README.md"
+            exit 1
+          fi
+
+      - name: Check branch name
+        run: |
+          if [[ ! $github.event.pull_request.head.ref =~ ^(hotfix|feature|test|build)\/.+$ ]]; then
+            echo "The branch name did not match the expected format. Please check rule in README.md"
+            exit 1
+          fi
+
+      - name: Check commit message
+        run: |
+          for commit in "${github.event.commits[@]}"; do
+            if [[ ! $commit.message =~ ^(feat|fix|refactor|docs|test|ci|chore)\([A-Za-z0-9]+\)\:\s.+$ ]]; then
+              echo "The commit message did not match the expected format. Please check rule in README.md"
+              exit 1
+            fi
+          done
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2

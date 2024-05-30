@@ -35,10 +35,8 @@ Some rules for this project, please read carefully. If you have any questions, p
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | feat     | some new feature                                                                                                                                        |
 | fix      | fix bug                                                                                                                                                 |
-| perf     | improve performance                                                                                                                                     |
 | refactor | refactor code, eg. rename variable, extract method, improve architecture without changing behavior                                                      |
 | docs     | update or add documentation                                                                                                                             |
-| style    | update code style (white-space, formatting, missing semi-colons, etc), eg. convert 2+2 to ((2+2))                                                       |
 | test     | add, update, or fix tests                                                                                                                               |
 | ci       | update CI config, eg. add auto-test on PR                                                                                                               |
 | chore    | update the build process, or update dependencies, or remove unnecessary files, or upgrade an dependency to a newer version, or perform any other chores |
@@ -51,28 +49,33 @@ Example:
 
 ## 2. Branch
 
-| Type    | Description                                                           |
-| ------- | --------------------------------------------------------------------- |
-| hotfix  | fix bug, quickly fix a bug in a stable release                        |
-| release | fix bug, a new release of a stable version, typically a patch release |
-| feature | add new feature                                                       |
-| test    | add, update, or fix tests                                             |
-| build   | update build process, eg. add auto-test on PR                         |
+| Type    | Description                                    |
+| ------- | ---------------------------------------------- |
+| hotfix  | fix bug, quickly fix a bug in a stable release |
+| feature | add new feature                                |
+| test    | add, update, or fix tests                      |
+| build   | update build process, eg. add auto-test on PR  |
 
 Example:
 
-- feature/auth: add feature authentication
-- test/auth: add test for authentication
+- feature/auth
+- test/spash
 
 ## 3. Pull Request
 
-| Type | Description |
-| ---- | ----------- |
-| ...  | ...         |
+| Type    | Description               |
+| ------- | ------------------------- |
+| Android | Mobile App on Android OS  |
+| iOS     | Mobile App on iOS OS      |
+| Web     | Web App on Web browser    |
+| Windows | Desktop App on Windows OS |
+| Linux   | Desktop App on Linux OS   |
+| macOS   | Desktop App on macOS OS   |
 
 Example:
 
-- ...
+- [Mobile] Add new feature
+- [Web][Desktop] Fix bug
 
 # Code Generator
 
