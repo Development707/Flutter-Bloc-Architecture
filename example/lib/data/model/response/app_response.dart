@@ -18,7 +18,7 @@ class AppResponse<T> with _$AppResponse<T> {
   ///
   /// Show when response field is page
   @With.fromString("AppPagination<T>")
-  const factory AppResponse.page(List<T> data, int pageNumber, int pageSize, int totalElements) = AppResponsePage<T>;
+  const factory AppResponse.page(List<T> data, int page, int perPage, int totalElements) = AppResponsePage<T>;
 
   /// unionKey: failure
   ///
@@ -113,10 +113,10 @@ extension CommonAppResponse<T> on AppResponse<T> {
   List<T>? get dataPage => whenOrNull(page: (List<T> data, _, __, ___) => data);
 
   /// Page number
-  int? get pageNumber => whenOrNull(page: (_, int pageNumber, __, ___) => pageNumber);
+  int? get page => whenOrNull(page: (_, int page, __, ___) => page);
 
   /// Page size
-  int? get pageSize => whenOrNull(page: (_, __, int pageSize, ___) => pageSize);
+  int? get perPage => whenOrNull(page: (_, __, int perPage, ___) => perPage);
 
   /// Total elements
   int? get totalElements => whenOrNull(page: (_, __, ___, int totalElements) => totalElements);

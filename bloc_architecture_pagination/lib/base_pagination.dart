@@ -12,12 +12,6 @@ abstract class BasePagination<T> {
   /// Number of next page
   int get nextPageNumber;
 
-  /// Number of previous page
-  int get previousPageNumber;
-
-  /// Check is first page
-  bool get isFirst;
-
   /// Check is last page
   bool get isLast;
 }

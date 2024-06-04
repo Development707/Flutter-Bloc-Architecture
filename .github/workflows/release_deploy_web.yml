@@ -28,7 +28,7 @@ jobs:
       - run: flutter pub run build_runner build --delete-conflicting-outputs
         working-directory: example
 
-      - run: flutter build web --base-href=/Flutter-Bloc-Architecture/  --dart-define-from-file=env-dev.env
+      - run: flutter build web --base-href=/Flutter-Bloc-Architecture/  --dart-define-from-file=.dev.env
         working-directory: example
 
       - uses: peaceiris/actions-gh-pages@v4

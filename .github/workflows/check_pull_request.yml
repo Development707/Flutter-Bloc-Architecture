@@ -14,11 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
 
       - name: Check pull request title
         run: |
-          if [[ ! $github.event.pull_request.title =~ ^(\[[A-Za-z]+\])+\s.+$ ]]; then
+          if [[ ! $github.event.pull_request.title =~ ^(\[[A-Za-z]+\]\s)+.+$ ]]; then
             echo "The pull request title did not match the expected format. Please check rule in README.md"
             exit 1
           fi
@@ -38,6 +37,8 @@ jobs:
               exit 1
             fi
           done
+
+      - uses: actions/checkout@v4
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2

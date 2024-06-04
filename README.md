@@ -75,7 +75,7 @@ Example:
 Example:
 
 - [Mobile] Add new feature
-- [Web][Desktop] Fix bug
+- [Web] [Linux] Fix bug
 
 # Code Generator
 

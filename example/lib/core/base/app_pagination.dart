@@ -9,19 +9,11 @@ mixin AppPagination<T> on AppResponse<T> implements BasePagination<T> {
 
   /// Number of next page
   @override
-  int get nextPageNumber => (pageNumber ?? 0) + 1;
-
-  /// Number of previous page
-  @override
-  int get previousPageNumber => isFirst ? 0 : (pageNumber ?? 0) - 1;
-
-  /// Check is first page
-  @override
-  bool get isFirst => (pageNumber ?? 0) == 0;
+  int get nextPageNumber => (page ?? 0) + 1;
 
   /// Check is last page
   @override
-  bool get isLast => ((pageNumber ?? 0) * (pageSize ?? 0)) >= (totalElements ?? 0);
+  bool get isLast => ((page ?? 0) * (perPage ?? 0)) >= (totalElements ?? 0);
 }
 
 /// Controller for a paged widget.
