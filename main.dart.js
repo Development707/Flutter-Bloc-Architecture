@@ -9855,7 +9855,7 @@ switch(p.i(a,q)){case"data":s=b.$1(p.i(a,"data"))
 A.bP(p.i(a,q))
 return new A.Ik(s,c.h("Ik<0>"))
 case"page":s=J.l8(t.j.a(p.i(a,"data")),b,c)
-return A.aYs(A.ah(s,!0,s.$ti.h("aR.E")),B.c.aC(A.fu(p.i(a,"page_number"))),B.c.aC(A.fu(p.i(a,"page_size"))),B.c.aC(A.fu(p.i(a,"total_elements"))),A.bP(p.i(a,q)),c)
+return A.aYs(A.ah(s,!0,s.$ti.h("aR.E")),B.c.aC(A.fu(p.i(a,"page"))),B.c.aC(A.fu(p.i(a,"per_page"))),B.c.aC(A.fu(p.i(a,"total_elements"))),A.bP(p.i(a,q)),c)
 case"failure":s=A.bC(p.i(a,"message"))
 A.bP(p.i(a,q))
 return new A.Il(s,c.h("Il<0>"))
@@ -55102,7 +55102,7 @@ glu(a){var s=this.a
 if(s instanceof A.wm)return s
 return new A.wm(s,s,this.$ti.h("wm<1>"))},
 j(a){var s=this
-return"AppResponse<"+A.b2(s.$ti.c).j(0)+">.page(data: "+A.i(s.glu(0))+", pageNumber: "+s.b+", pageSize: "+s.c+", totalElements: "+s.d+")"},
+return"AppResponse<"+A.b2(s.$ti.c).j(0)+">.page(data: "+A.i(s.glu(0))+", page: "+s.b+", perPage: "+s.c+", totalElements: "+s.d+")"},
 k(a,b){var s,r=this
 if(b==null)return!1
 if(r!==b)if(J.O(b)===A.o(r))if(r.$ti.b(b))if(B.cb.ey(b.a,r.a)){s=b.b===r.b
