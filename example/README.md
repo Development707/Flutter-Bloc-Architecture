@@ -17,5 +17,5 @@ flutter pub run build_runner build --delete-conflicting-outputs
 ## 3. Run the app
 
 ```bash
-flutter run --flavor=development --dart-define-from-file=env-dev.json
+flutter run --flavor=development --dart-define-from-file=.dev.env
 ```

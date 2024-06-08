@@ -43,9 +43,9 @@ Some rules for this project, please read carefully. If you have any questions, p
 
 Example:
 
-- feat: authentication
-- fix: bug login
-- docs: update documentation
+- feat(Bloc): authentication
+- fix(Home): bug login
+- docs(README): update documentation
 
 ## 2. Branch
 

@@ -7,14 +7,13 @@ name: Check
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   check:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Check pull request title
         run: |
           if [[ ! $github.event.pull_request.title =~ ^(\[[A-Za-z]+\]\s)+.+$ ]]; then
@@ -32,7 +31,7 @@ jobs:
       - name: Check commit message
         run: |
           for commit in "${github.event.commits[@]}"; do
-            if [[ ! $commit.message =~ ^(feat|fix|refactor|docs|test|ci|chore)\([A-Za-z0-9]+\)\:\s.+$ ]]; then
+            if [[ ! $commit.message =~ ^(feat|fix|refactor|docs|test|ci|chore)\(\S+\)\:\s.+$ ]]; then
               echo "The commit message did not match the expected format. Please check rule in README.md"
               exit 1
             fi
@@ -40,17 +39,15 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@v2
         with:
           channel: stable
           flutter-version-file: example/pubspec.yaml
 
-      - name: Install dependencies
-        run: flutter pub get
+      - run: flutter pub get
 
-      - name: Verify formatting
-        run: dart format --output=none --set-exit-if-changed .
+      - run: flutter pub run build_runner build --delete-conflicting-outputs
 
-      - name: Analyze project source
-        run: dart analyze
+      - run: flutter analyze
+
+      - run: dart format --output=none --set-exit-if-changed .
