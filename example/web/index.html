@@ -26,23 +26,12 @@
     <meta name="apple-mobile-web-app-title" content="bloc_architecture" />
     <link rel="apple-touch-icon" href="icons/Icon-192.png" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png" />
+    <!-- Theme color for Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
 
     <title>bloc_architecture</title>
     <link rel="manifest" href="manifest.json" />
-
-    <script>
-      // The value below is injected by flutter build, do not touch.
-      var serviceWorkerVersion = {{flutter_service_worker_version}};
-    </script>
-    <!-- This script adds the flutter initialization JS code -->
-    <script src="flutter.js" defer></script>
-    <script> // Flutter web status bar in iOS (Safari)
-      function setMetaThemeColor(color) {
-        document.querySelector('meta[name="theme-color"]').setAttribute("content", color);
-      }
-    </script>
   </head>
 
   <body>
@@ -102,31 +91,34 @@
       <img src="icons/Icon-192.png" alt="Loading indicator..." />
     </div>
     <script>
-      window.addEventListener("load", function () {
-        var loading = document.querySelector("#loading");
+      {{flutter_js}}
+      {{flutter_build_config}}
 
-        _flutter.loader
-          .loadEntrypoint({
-            serviceWorker: {
-              serviceWorkerVersion: serviceWorkerVersion,
-            },
-          })
-          .then(function (engineInitializer) {
+      var loading = document.querySelector("#loading");
+      
+      _flutter.loader
+        .load({
+          serviceWorkerSettings: {
+            serviceWorkerVersion: "{{flutter_service_worker_version}}",
+          },
+          onEntrypointLoaded: async function(engineInitializer) {
+            // Initializing the engine: opacity animation to 1.0
             loading.classList.add("main_done");
-            return engineInitializer.initializeEngine();
-          })
-          .then(function (appRunner) {
+            const appRunner = await engineInitializer.initializeEngine();
+
+            // Running the app: Zoom animation to 10x
             loading.classList.add("init_done");
-            return appRunner.runApp();
-          })
-          .then(function (app) {
-            // Wait a few milliseconds so users can see the "zoooom" animation
-            // before getting rid of the "loading" div.
-            window.setTimeout(function () {
-              loading.remove();
-            }, 200);
-          });
-      });
+            const values = await Promise.all([
+              appRunner.runApp(),
+              new Promise((resolve) => setTimeout(resolve, 250)),
+            ]);
+
+            /// App is running: Remove loading indicator
+            loading.remove();
+            const app = values[0];
+          }
+        });
     </script>
   </body>
 </html>
+
