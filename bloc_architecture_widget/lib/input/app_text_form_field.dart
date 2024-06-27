@@ -12,6 +12,7 @@ import "../app_params.dart";
 /// If you making a `AppTextFormField` where you require save, reset, or validate
 class AppTextFormField extends TextField {
   /// Create a AppTextFormField
+  @Deprecated("Is example use mixin `AppTextFormFieldHandle`")
   const AppTextFormField({
     super.key,
     // Form
@@ -246,36 +247,17 @@ class AppTextFormFieldState<T extends AppTextFormField> extends State<T> with Ap
   }
 
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<bool>("obscureText", obscureText));
-  }
-}
+  late FocusNode focusNode = widget.focusNode ?? FocusNode();
 
-/// Handle form input text field
-mixin AppTextFormFieldHandle<T extends AppTextFormField> on State<T> {
-  FocusNode? _focusNode;
-  Timer? _debounce;
-  TextEditingController? _controller;
+  @override
+  late TextEditingController controller = widget.controller ?? TextEditingController();
 
-  /// Key [FormFieldState]
-  GlobalKey<FormFieldState<String>>? formFieldKey;
-
-  /// The current state of a [FormField]. Passed to the [FormFieldBuilder] method for use in constructing the form field's widget
-  FormFieldState<String>? get fieldState => formFieldKey?.currentState;
-
-  /// An object that can be used by a stateful widget to obtain the keyboard focus and to handle keyboard events.
-  FocusNode get focusNode => widget.focusNode ?? (_focusNode ??= FocusNode());
-
-  /// A controller for an editable text field.
-  TextEditingController get controller => widget.controller ?? (_controller ??= TextEditingController());
+  /// The current state of a [FormField].
+  late GlobalKey<FormFieldState<String>>? formFieldKey = widget.formFieldKey ?? GlobalKey<FormFieldState<String>>();
 
   @override
   void initState() {
-    formFieldKey ??= widget.formFieldKey ?? GlobalKey<FormFieldState<String>>();
     super.initState();
-    focusNode.addListener(onFocusChange);
-    controller.addListener(onControllerChange);
     if (widget.initialValue != null) {
       controller.text = widget.initialValue!;
     }
@@ -283,25 +265,87 @@ mixin AppTextFormFieldHandle<T extends AppTextFormField> on State<T> {
 
   @override
   void dispose() {
-    focusNode.removeListener(onFocusChange);
-    controller.removeListener(onControllerChange);
     super.dispose();
-    _focusNode?.dispose();
-    _debounce?.cancel();
-    _controller?.dispose();
+    focusNode.dispose();
+    controller.dispose();
   }
 
-  /// Action when text field change forcus
-  void onFocusChange() {
+  @override
+  FormFieldState<String>? get fieldState => formFieldKey?.currentState;
+
+  @override
+  ValueChanged<String>? get onEditingCompleteValue => widget.onEditingCompleteValue;
+
+  @override
+  ValueChanged<String>? get onEditingEnd => widget.onEditingEnd;
+
+  @override
+  ValueChanged<(bool, String)>? get onFocusChange => widget.onFocusChange;
+
+  /// Action when text field tap
+  void onTap() => widget.onTap?.call();
+
+  @override
+  void onFieldChange(String value) {
+    widget.onChanged?.call(value);
+    super.onFieldChange(value);
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<bool>("obscureText", obscureText))
+      ..add(DiagnosticsProperty<GlobalKey<FormFieldState<String>>?>("formFieldKey", formFieldKey));
+  }
+}
+
+/// Handle form input text field
+mixin AppTextFormFieldHandle<T extends StatefulWidget> on State<T> {
+  /// The current state of a [FormField]. Passed to the [FormFieldBuilder] method for use in constructing the form field's widget
+  FormFieldState<String>? get fieldState;
+
+  /// An object that can be used by a stateful widget to obtain the keyboard focus and to handle keyboard events.
+  FocusNode get focusNode;
+
+  /// A controller for an editable text field.
+  TextEditingController get controller;
+
+  /// Action when text field change text
+  ValueChanged<String>? get onEditingCompleteValue;
+
+  /// Action when focus change
+  ValueChanged<(bool, String)>? get onFocusChange;
+
+  /// Action when text field change text after debounce
+  ValueChanged<String>? get onEditingEnd;
+
+  Timer? _debounce;
+
+  @override
+  void initState() {
+    super.initState();
+    focusNode.addListener(_onFocusChange);
+    controller.addListener(_onControllerChange);
+  }
+
+  @override
+  void dispose() {
+    focusNode.removeListener(_onFocusChange);
+    controller.removeListener(_onControllerChange);
+    super.dispose();
+    _debounce?.cancel();
+  }
+
+  void _onFocusChange() {
     if (!focusNode.hasFocus) {
       setState(() => fieldState?.validate());
-      widget.onEditingCompleteValue?.call(controller.value.text);
+      onEditingCompleteValue?.call(controller.value.text);
     }
-    widget.onFocusChange?.call((focusNode.hasFocus, controller.value.text));
+    onFocusChange?.call((focusNode.hasFocus, controller.value.text));
   }
 
-  /// Action when controller change text
-  void onControllerChange() {
+  void _onControllerChange() {
     fieldState?.didChange(controller.text);
     if (fieldState?.isValid ?? false) {
       setState(() => fieldState?.validate());
@@ -310,20 +354,16 @@ mixin AppTextFormFieldHandle<T extends AppTextFormField> on State<T> {
 
   /// Action when text field change text
   void onFieldChange(String value) {
-    widget.onChanged?.call(value);
     if (fieldState?.isValid ?? false) {
       setState(() => fieldState?.validate());
     }
-    if (widget.onEditingEnd != null) {
+    if (onEditingEnd != null) {
       if (_debounce?.isActive ?? false) {
         _debounce!.cancel();
       }
       _debounce = Timer(AppParams.delayInputEnd, () {
-        widget.onEditingEnd!(fieldState?.value ?? "");
+        onEditingEnd!(fieldState?.value ?? "");
       });
     }
   }
-
-  /// Action when text field tap
-  void onTap() => widget.onTap?.call();
 }

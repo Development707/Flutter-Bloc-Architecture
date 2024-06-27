@@ -10,68 +10,15 @@ import "app_text_form_field.dart";
 /// Text field date with button
 class AppTextDateField extends AppTextFormField {
   /// Create new instance of [AppTextDateField].
+  @Deprecated("Is example use mixin `AppTextDateFieldHandle`")
   AppTextDateField({
     super.key,
-    // Date
-    super.keyboardType = TextInputType.datetime,
-    super.textInputAction = TextInputAction.done,
-    super.prefixIcon = const Icon(Icons.calendar_month),
     this.initialDate,
     this.minimumDate,
     this.maximumDate,
     this.onDateChanged,
     DateFormat? dateFormat,
     this.enablePickTime = false,
-    // Form
-    super.formFieldKey,
-    super.restorationId,
-    super.initialValue,
-    super.validator,
-    super.onSaved,
-    super.onFieldSubmitted,
-    // Text field
-    super.controller,
-    super.focusNode,
-    super.textCapitalization,
-    super.style,
-    super.textAlign,
-    super.textAlignVertical,
-    super.textDirection,
-    super.readOnly,
-    super.showCursor,
-    super.autofocus,
-    super.autocorrect,
-    super.obscureText,
-    super.enableSuggestions,
-    super.enabled,
-    super.minLines,
-    super.maxLength,
-    super.onChanged,
-    super.onEditingEnd,
-    super.onFocusChange,
-    super.onEditingCompleteValue,
-    super.onEditingComplete,
-    super.onTap,
-    super.inputFormatters,
-    // Decoration
-    super.decoration,
-    super.border,
-    super.fillColor,
-    super.prefix,
-    super.suffix,
-    super.label,
-    super.hintText,
-    super.errorText,
-    super.suffixIcon,
-    super.suffixIconConstraints,
-    super.prefixIconConstraints,
-    super.contentPadding,
-    super.isDense,
-    // Scroll
-    super.expands,
-    super.maxLines,
-    super.scrollController,
-    super.scrollPhysics,
   }) : dateFormat = dateFormat ?? DateTimeFormatter.l10nDateFormat;
 
   /// Initial date
@@ -108,49 +55,70 @@ class AppTextDateField extends AppTextFormField {
   }
 }
 
-class _AppTextDateFieldState extends AppTextFormFieldState<AppTextDateField> {
-  final DateTime _now = DateTime.now();
-  late DateTime _selected = widget.initialDate ?? _now;
-
-  void onDateTimeChange(DateTime? dateTime) {
-    if (dateTime == null) {
-      return;
-    }
-
-    _selected = dateTime;
-    widget.onDateChanged?.call(_selected);
-
-    controller.text = widget.dateFormat.format(_selected);
-  }
+class _AppTextDateFieldState extends AppTextFormFieldState<AppTextDateField>
+    with AppTextDateFieldHandle<AppTextDateField> {
+  @override
+  DateFormat get dateFormat => widget.dateFormat;
 
   @override
-  void initState() {
-    super.initState();
-    if (widget.initialDate != null) {
-      controller.text = widget.dateFormat.format(widget.initialDate!);
-    }
-  }
+  bool get enablePickTime => widget.enablePickTime;
 
   @override
-  void onFieldChange(String value) {
-    super.onFieldChange(value);
+  DateTime? get initialDate => widget.initialDate;
 
-    onDateTimeChange(widget.dateFormat.parse(value));
-  }
+  @override
+  DateTime? get maximumDate => widget.maximumDate;
+
+  @override
+  DateTime? get minimumDate => widget.minimumDate;
+
+  @override
+  ValueChanged<DateTime>? get onDateChanged => widget.onDateChanged;
 
   @override
   Future<void> onTap() async {
-    if (!(widget.enabled ?? true)) {
-      return;
-    }
+    await showPicker();
+  }
+}
 
+/// Handle input text date field
+mixin AppTextDateFieldHandle<T extends StatefulWidget> on State<T> {
+  final DateTime _now = DateTime.now();
+  late DateTime _selected = initialDate ?? _now;
+
+  /// A controller for an editable text field.
+  TextEditingController get controller;
+
+  /// An object that can be used by a stateful widget to obtain the keyboard focus and to handle keyboard events.
+  FocusNode get focusNode;
+
+  /// Initial date
+  DateTime? get initialDate;
+
+  /// Minimum date default 1/1/1900
+  DateTime? get minimumDate;
+
+  /// Maximum date default now
+  DateTime? get maximumDate;
+
+  /// On date change
+  ValueChanged<DateTime>? get onDateChanged;
+
+  /// Date format
+  DateFormat get dateFormat;
+
+  /// Enable pick time
+  bool get enablePickTime;
+
+  /// Action pick date
+  Future<void> showPicker() async {
     final DateTime? dateTime = await showDatePicker(
       context: context,
       initialDate: _selected,
       firstDate: DateTime(1900),
-      lastDate: widget.maximumDate ?? _now,
+      lastDate: maximumDate ?? _now,
     ).then((DateTime? value) async {
-      if (value != null && widget.enablePickTime) {
+      if (value != null && enablePickTime) {
         final TimeOfDay? time = await showTimePicker(
           context: context,
           initialTime: TimeOfDay.fromDateTime(value),
@@ -162,6 +130,38 @@ class _AppTextDateFieldState extends AppTextFormFieldState<AppTextDateField> {
       return value;
     });
 
-    onDateTimeChange(dateTime);
+    _onDateTimeChange(dateTime);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    focusNode.addListener(_onFocusChange);
+    if (initialDate != null) {
+      controller.text = dateFormat.format(initialDate!);
+    }
+  }
+
+  @override
+  void dispose() {
+    focusNode.removeListener(_onFocusChange);
+    super.dispose();
+  }
+
+  void _onFocusChange() {
+    if (!focusNode.hasFocus) {
+      _onDateTimeChange(dateFormat.parse(controller.text));
+    }
+  }
+
+  void _onDateTimeChange(DateTime? dateTime) {
+    if (dateTime == null) {
+      return;
+    }
+
+    _selected = dateTime;
+    onDateChanged?.call(_selected);
+
+    controller.text = dateFormat.format(_selected);
   }
 }

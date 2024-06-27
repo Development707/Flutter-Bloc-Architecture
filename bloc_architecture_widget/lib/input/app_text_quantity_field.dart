@@ -11,66 +11,14 @@ import "app_text_form_field.dart";
 /// Text field quantity with button
 class AppTextQuantityField<T extends num> extends AppTextFormField {
   /// Create new instance of [AppTextQuantityField]
+  @Deprecated("Is example use mixin `AppTextQuantityFieldHandle`")
   const AppTextQuantityField({
     super.key,
     // Quantity
-    super.textAlign = TextAlign.center,
-    super.keyboardType = TextInputType.number,
     this.initial,
     this.minimun,
     this.maximun,
     this.onQuantityChanged,
-    // Form
-    super.formFieldKey,
-    super.restorationId,
-    super.initialValue,
-    super.validator,
-    super.onSaved,
-    super.onFieldSubmitted,
-    // Text field
-    super.controller,
-    super.focusNode,
-    super.textInputAction,
-    super.textCapitalization,
-    super.style,
-    super.textAlignVertical,
-    super.textDirection,
-    super.readOnly,
-    super.showCursor,
-    super.autofocus,
-    super.autocorrect,
-    super.obscureText,
-    super.enableSuggestions,
-    super.enabled,
-    super.minLines,
-    super.maxLength,
-    super.onChanged,
-    super.onEditingEnd,
-    super.onFocusChange,
-    super.onEditingCompleteValue,
-    super.onEditingComplete,
-    super.onTap,
-    super.inputFormatters,
-    // Decoration
-    super.decoration,
-    super.border,
-    super.fillColor,
-    super.prefix,
-    super.suffix,
-    super.prefixIcon,
-    super.label,
-    super.hintText,
-    super.errorText,
-    super.suffixIcon,
-    super.suffixIconConstraints,
-    super.prefixIconConstraints,
-    super.contentPadding,
-    super.isDense,
-    // Scroll
-    super.expands,
-    super.maxLines,
-    super.scrollController,
-    super.scrollPhysics,
   });
 
   /// Initial quantity
@@ -99,56 +47,112 @@ class AppTextQuantityField<T extends num> extends AppTextFormField {
   }
 }
 
-class _AppTextQuantityFieldState<T extends num> extends AppTextFormFieldState<AppTextQuantityField<T>> {
+class _AppTextQuantityFieldState<T extends num> extends AppTextFormFieldState<AppTextQuantityField<T>>
+    with AppTextQuantityFieldHandle<T, AppTextQuantityField<T>> {
   @override
-  void initState() {
-    super.initState();
-    controller.text = widget.initial?.toDecimal() ?? "";
-  }
+  T? get initial => widget.initial;
+
+  @override
+  T? get maximun => widget.maximun;
+
+  @override
+  T? get minimun => widget.minimun;
+
+  @override
+  ValueChanged<T>? get onQuantityChanged => widget.onQuantityChanged;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        IconButton.outlined(onPressed: widget.enabled ?? true ? minus : null, icon: const Icon(Icons.remove)),
+        IconButton.outlined(onPressed: onMinus, icon: const Icon(Icons.remove)),
         Expanded(child: super.build(context)),
-        IconButton.outlined(onPressed: widget.enabled ?? true ? plus : null, icon: const Icon(Icons.add)),
+        IconButton.outlined(onPressed: onPlus, icon: const Icon(Icons.add)),
       ].applySeparator(const SizedBox(width: 8)),
     );
   }
 
   @override
-  void onFocusChange() {
-    super.onFocusChange();
-
-    if (!focusNode.hasFocus) {
-      onQuantityChanged();
-    }
-  }
-
-  @override
   List<TextInputFormatter>? buildInputFormatters(BuildContext context) {
     return <TextInputFormatter>[
-      FilteringTextInputFormatter.allow(RegExp("[0-9\\${getDecimalSep()}-]")),
+      textQuantityFormatter,
       ...?super.buildInputFormatters(context),
     ];
   }
+}
 
-  String getDecimalSep() {
+/// Handle input text quantity field
+mixin AppTextQuantityFieldHandle<T extends num, S extends StatefulWidget> on State<S> {
+  /// A controller for an editable text field.
+  TextEditingController get controller;
+
+  /// An object that can be used by a stateful widget to obtain the keyboard focus and to handle keyboard events.
+  FocusNode get focusNode;
+
+  /// Initial quantity
+  T? get initial;
+
+  /// Minimun quantity
+  T? get minimun;
+
+  /// Maximun quantity
+  T? get maximun;
+
+  /// Callback when quantity changed
+  ValueChanged<T>? get onQuantityChanged;
+
+  /// Quantity formatter
+  TextInputFormatter get textQuantityFormatter =>
+      FilteringTextInputFormatter.allow(RegExp("[0-9\\${_getDecimalSep()}-]"));
+
+  /// Action when minus button pressed
+  void onMinus() {
+    final T quantity = (_getQuantity() - 1) as T;
+
+    _onQuantityChanged(quantity);
+  }
+
+  /// Action when plus button pressed
+  void onPlus() {
+    final T quantity = (_getQuantity() + 1) as T;
+
+    _onQuantityChanged(quantity);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    focusNode.addListener(_onFocusChange);
+    controller.text = initial?.toDecimal() ?? "";
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    focusNode.removeListener(_onFocusChange);
+  }
+
+  void _onFocusChange() {
+    if (!focusNode.hasFocus) {
+      _onQuantityChanged();
+    }
+  }
+
+  String _getDecimalSep() {
     final Locale locale = Localizations.localeOf(context);
     final NumberSymbols? numberSymbols = numberFormatSymbols[locale.toString()] as NumberSymbols?;
 
     return numberSymbols?.DECIMAL_SEP ?? ".";
   }
 
-  T getQuantity() {
+  T _getQuantity() {
     String text = controller.text;
 
     if (T == int) {
       return (int.tryParse(text.replaceAll(RegExp("[^0-9-]"), "")) ?? 0) as T;
     } else if (T == double) {
-      text = text.replaceAll(RegExp("[^0-9${getDecimalSep()}-]"), "");
-      text = text.replaceAll(getDecimalSep(), ".");
+      text = text.replaceAll(RegExp("[^0-9${_getDecimalSep()}-]"), "");
+      text = text.replaceAll(_getDecimalSep(), ".");
 
       return (double.tryParse(text) ?? 0.0) as T;
     }
@@ -156,32 +160,20 @@ class _AppTextQuantityFieldState<T extends num> extends AppTextFormFieldState<Ap
     return 0 as T;
   }
 
-  void onQuantityChanged([T? newQuantity]) {
-    T? quantity = newQuantity ?? getQuantity();
+  void _onQuantityChanged([T? newQuantity]) {
+    T? quantity = newQuantity ?? _getQuantity();
 
-    final T? minimun = widget.minimun;
+    final T? minimun = this.minimun;
     if (minimun != null && quantity < minimun) {
       quantity = minimun;
     }
-    final T? maximun = widget.maximun;
+    final T? maximun = this.maximun;
     if (maximun != null && quantity > maximun) {
       quantity = maximun;
     }
 
     controller.text = quantity.toDecimal();
 
-    widget.onQuantityChanged?.call(quantity);
-  }
-
-  void minus() {
-    final T quantity = (getQuantity() - 1) as T;
-
-    onQuantityChanged(quantity);
-  }
-
-  void plus() {
-    final T quantity = (getQuantity() + 1) as T;
-
-    onQuantityChanged(quantity);
+    onQuantityChanged?.call(quantity);
   }
 }

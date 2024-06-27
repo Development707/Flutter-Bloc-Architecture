@@ -21,13 +21,14 @@ enum AppAnimatedType {
 /// [AppAnimated]
 class AppAnimated extends StatelessWidget {
   /// Create new instance of [AppAnimated]
-  const AppAnimated({
+  AppAnimated({
     super.key,
-    this.duration = AppParams.animationDuration,
-    this.curve = AppParams.animationCurve,
+    Duration? duration,
+    Curve? curve,
     this.type = AppAnimatedType.fade,
     this.child,
-  });
+  })  : duration = duration ?? AppParams.animationDuration,
+        curve = curve ?? AppParams.animationCurve;
 
   /// The duration of the animation.
   final Duration duration;

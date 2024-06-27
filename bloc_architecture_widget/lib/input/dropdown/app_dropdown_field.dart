@@ -13,6 +13,7 @@ import "../app_text_form_field.dart";
 /// A dropdown menu that can be opened from a [TextField].
 class AppDropdownField<T> extends AppTextFormField {
   /// Create instance of [AppDropdownField].
+  @Deprecated("Is example use mixin `AppDropdownFieldHandle`")
   const AppDropdownField({
     // Dropdown
     required this.dropdownMenuEntries,
@@ -264,10 +265,10 @@ mixin AppDropdownFieldStateForm<T, W extends AppDropdownField<T>> on AppDropdown
   }
 
   @override
-  void onControllerChange() {
-    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) {
-      super.onControllerChange();
-    });
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
   }
 
   @override
